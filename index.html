@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark-studio">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f1a34" />
+  <meta name="description" content="Inscribe — Your professional voice acting script library" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Inscribe</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImJnIiBjeD0iNTAlIiBjeT0iNDIlIiByPSI3MiUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyNjQwNmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjFhMzQiLz48L3JhZGlhbEdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlY2Q0ODgiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjOWE4NGEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9Ijk2IiBmaWxsPSJ1cmwoI2JnKSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iOTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M5YTg0YSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAwIDEwMCkgc2NhbGUoMC43MikgdHJhbnNsYXRlKC0xMDAgLTEwMCkiPjxwYXRoIGQ9Ik0gNTEuNCwyMS45IEMgNTEuNSwyMS45IDUwLjgsMTcuOCA1My42LDIwLjAgQyA1Ni41LDIyLjIgNjUuMiwzMS43IDY4LjYsMzQuOSBDIDcxLjksMzguMiA3Mi41LDM1LjUgNzMuOCwzOS40IEMgNzUuMSw0My4zIDc1LjUsNTYuMCA3Ni4zLDU4LjIgQyA3Ny4yLDYwLjQgNzguMyw1NC44IDc5LjEsNTIuNyBDIDc5LjksNTAuNSA3OS4xLDQ0LjkgODEuMCw0NS41IEMgODMuMCw0Ni4wIDg3LjksNTIuNCA5MS4wLDU2LjAgQyA5NC4xLDU5LjUgOTkuMCw2MS4zIDk5LjksNjYuOCBDIDEwMC43LDcyLjIgOTcuMCw4Mi4yIDk2LjMsODguNyBDIDk1LjYsOTUuMSA5NS43LDEwMi43IDk1LjcsMTA1LjUgQyA5NS44LDEwOC40IDk1LjksMTA4LjAgOTYuNSwxMDUuNSBDIDk3LjIsMTAzLjAgOTguMSw5NS45IDk5LjYsOTAuNiBDIDEwMS4xLDg1LjMgMTAzLjIsNzUuMSAxMDUuNCw3My43IEMgMTA3LjYsNzIuMyAxMDkuOCw3OC41IDExMi42LDgyLjMgQyAxMTUuNCw4Ni4xIDEyMC4zLDkzLjYgMTIyLjMsOTYuNyBDIDEyNC4zLDk5LjggMTI0LjMsOTguOSAxMjQuOCwxMDAuOCBDIDEyNS4zLDEwMi44IDEyNS41LDEwNS41IDEyNS4zLDEwOC4zIEMgMTI1LjEsMTExLjEgMTI0LjgsMTEzLjUgMTIzLjcsMTE3LjQgQyAxMjIuNiwxMjEuNCAxMTkuMiwxMjkuOSAxMTguNywxMzIuMSBDIDExOC4yLDEzNC4zIDExOS41LDEzMi4xIDEyMC42LDEzMC43IEMgMTIxLjgsMTI5LjQgMTI0LjMsMTI2LjIgMTI1LjYsMTI0LjEgQyAxMjYuOSwxMjIuMCAxMjcuNSwxMjAuOCAxMjguNCwxMTguMyBDIDEyOS4yLDExNS44IDEyOS42LDEwOS4xIDEzMC42LDEwOS4xIEMgMTMxLjYsMTA5LjEgMTMzLjcsMTE1LjYgMTM0LjUsMTE4LjMgQyAxMzUuMiwxMjAuOSAxMzUuMiwxMjIuNyAxMzUuMCwxMjQuOSBDIDEzNC44LDEyNy4xIDEzNC40LDEyOS4wIDEzMy40LDEzMS42IEMgMTMyLjMsMTM0LjEgMTMwLjAsMTM4LjEgMTI4LjksMTQwLjQgQyAxMjcuOSwxNDIuOCAxMjcuNCwxNDMuNiAxMjcuMCwxNDUuNyBDIDEyNi42LDE0Ny43IDEyOS4zLDE1NC45IDEyNi40LDE1Mi42IEMgMTIzLjYsMTUwLjMgMTE1LjUsMTM5LjkgMTA5LjgsMTMyLjEgQyAxMDQuMiwxMjQuMyA5Ni43LDExMi43IDkyLjQsMTA1LjggQyA4OC4xLDk4LjkgODYuOSw5Ni4zIDgzLjgsOTAuNiBDIDgwLjgsODQuOSA3OC4wLDc5LjggNzQuMSw3MS41IEMgNzAuMiw2My4xIDYyLjksNDUuNyA2MC42LDQwLjUgQyA1OC4yLDM1LjMgNjAuMCw0MC4yIDYwLjAsNDAuNSBDIDYwLjAsNDAuOCA1OS41LDM5LjcgNjAuMyw0Mi4xIEMgNjEuMSw0NC42IDYyLjYsNDkuOSA2NC43LDU1LjIgQyA2Ni44LDYwLjQgNjkuNSw2Ni45IDcyLjcsNzMuNyBDIDc2LjAsODAuNSA4MC4xLDg4LjUgODQuNCw5Ni4xIEMgODguNywxMDMuNyA5NC4wLDExMi40IDk4LjUsMTE5LjQgQyAxMDMuMCwxMjYuMyAxMDcuMiwxMzIuMiAxMTEuNSwxMzcuOSBDIDExNS44LDE0My43IDEyMC40LDE0OS4zIDEyNC41LDE1NC4wIEMgMTI4LjYsMTU4LjcgMTMxLjQsMTYxLjggMTM1LjgsMTY2LjIgQyAxNDAuMywxNzAuNSAxNDkuMCwxNzcuNyAxNTEuMSwxODAuMCBDIDE1My4xLDE4Mi4zIDE0OS4zLDE4MC4yIDE0OC4wLDE4MC4wIEMgMTQ2LjcsMTc5LjggMTQ1LjcsMTgwLjYgMTQzLjMsMTc4LjkgQyAxNDAuOSwxNzcuMSAxMzYuOCwxNzIuOCAxMzMuNiwxNjkuNSBDIDEzMC41LDE2Ni4yIDEyNi43LDE2MS41IDEyNC41LDE1OS4yIEMgMTIyLjMsMTU2LjkgMTIxLjksMTU2LjUgMTIwLjMsMTU1LjYgQyAxMTguOCwxNTQuOCAxMTguMCwxNTQuNSAxMTUuNCwxNTQuMyBDIDExMi43LDE1NC4wIDEwNy45LDE1NC41IDEwNC42LDE1NC4zIEMgMTAxLjIsMTU0LjAgOTguMCwxNTMuNyA5NS4yLDE1Mi45IEMgOTIuMywxNTIuMCA4OS45LDE1MC45IDg3LjQsMTQ5LjMgQyA4NS4wLDE0Ny42IDgxLjYsMTQ0LjEgODAuNSwxNDIuOSBDIDc5LjMsMTQxLjggNzkuMiwxNDIuMiA4MC41LDE0Mi40IEMgODEuNywxNDIuNSA4NS41LDE0My41IDg4LjAsMTQzLjcgQyA5MC40LDE0NC4wIDkzLjEsMTQzLjggOTUuNCwxNDMuNyBDIDk3LjgsMTQzLjYgMTAwLjksMTQzLjQgMTAyLjEsMTQzLjIgQyAxMDMuMywxNDMuMCAxMDUuMSwxNDMuMiAxMDIuNiwxNDIuNiBDIDEwMC4yLDE0Mi4wIDkxLjgsMTQwLjkgODcuNCwxMzkuNiBDIDgzLjAsMTM4LjMgNzkuMywxMzguMCA3Ni4xLDEzNC45IEMgNzIuOCwxMzEuOCA3MC41LDEyNi4zIDY3LjgsMTIxLjAgQyA2NS4wLDExNS44IDYxLjIsMTA3LjQgNTkuNCwxMDMuMyBDIDU3LjcsOTkuMiA1Ni44LDk3LjAgNTcuMiw5Ni40IEMgNTcuNiw5NS44IDYwLjEsOTguNSA2MS45LDk5LjQgQyA2My43LDEwMC40IDY1LjMsMTAxLjIgNjguMCwxMDIuMiBDIDcwLjgsMTAzLjIgNzYuMywxMDQuOSA3OC41LDEwNS41IEMgODAuOCwxMDYuMSA4My41LDEwNy44IDgxLjMsMTA1LjggQyA3OS4xLDEwMy45IDY5LjksOTcuNiA2NS4zLDkzLjkgQyA2MC42LDkwLjMgNTUuNyw4NS45IDUzLjYsODMuOSBDIDUxLjYsODIuMCA1My43LDg0LjkgNTMuMSw4Mi4zIEMgNTIuNSw3OS43IDUwLjcsNzIuNiA1MC4wLDY4LjQgQyA0OS40LDY0LjIgNDguNSw1OC4yIDQ5LjIsNTcuMSBDIDQ5LjksNTYuMCA1Mi44LDYwLjggNTQuNSw2Mi4xIEMgNTYuMiw2My40IDU4LjMsNjQuMyA1OS40LDY0LjggQyA2MC42LDY1LjQgNjIuNCw2Ni43IDYxLjQsNjUuMSBDIDYwLjQsNjMuNiA1NS4yLDU3LjggNTMuNCw1NS40IEMgNTEuNSw1My4wIDUxLjAsNTIuMSA1MC4zLDUwLjcgQyA0OS42LDQ5LjMgNDkuMCw0OS45IDQ4LjksNDcuMSBDIDQ4LjgsNDQuMyA0OS4wLDM4LjQgNDkuOCwzMy44IEMgNTAuNSwyOS4zIDUzLjEsMjIuMCA1My40LDIwLjAgQyA1My42LDE4LjAgNTEuNCwyMS45IDUxLjQsMjEuOSBaIiBmaWxsPSJ1cmwoI2cpIi8+PC9nPjwvc3ZnPg==" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImJnIiBjeD0iNTAlIiBjeT0iNDIlIiByPSI3MiUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyNjQwNmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjFhMzQiLz48L3JhZGlhbEdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlY2Q0ODgiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjOWE4NGEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9Ijk2IiBmaWxsPSJ1cmwoI2JnKSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iOTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M5YTg0YSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAwIDEwMCkgc2NhbGUoMC43MikgdHJhbnNsYXRlKC0xMDAgLTEwMCkiPjxwYXRoIGQ9Ik0gNTEuNCwyMS45IEMgNTEuNSwyMS45IDUwLjgsMTcuOCA1My42LDIwLjAgQyA1Ni41LDIyLjIgNjUuMiwzMS43IDY4LjYsMzQuOSBDIDcxLjksMzguMiA3Mi41LDM1LjUgNzMuOCwzOS40IEMgNzUuMSw0My4zIDc1LjUsNTYuMCA3Ni4zLDU4LjIgQyA3Ny4yLDYwLjQgNzguMyw1NC44IDc5LjEsNTIuNyBDIDc5LjksNTAuNSA3OS4xLDQ0LjkgODEuMCw0NS41IEMgODMuMCw0Ni4wIDg3LjksNTIuNCA5MS4wLDU2LjAgQyA5NC4xLDU5LjUgOTkuMCw2MS4zIDk5LjksNjYuOCBDIDEwMC43LDcyLjIgOTcuMCw4Mi4yIDk2LjMsODguNyBDIDk1LjYsOTUuMSA5NS43LDEwMi43IDk1LjcsMTA1LjUgQyA5NS44LDEwOC40IDk1LjksMTA4LjAgOTYuNSwxMDUuNSBDIDk3LjIsMTAzLjAgOTguMSw5NS45IDk5LjYsOTAuNiBDIDEwMS4xLDg1LjMgMTAzLjIsNzUuMSAxMDUuNCw3My43IEMgMTA3LjYsNzIuMyAxMDkuOCw3OC41IDExMi42LDgyLjMgQyAxMTUuNCw4Ni4xIDEyMC4zLDkzLjYgMTIyLjMsOTYuNyBDIDEyNC4zLDk5LjggMTI0LjMsOTguOSAxMjQuOCwxMDAuOCBDIDEyNS4zLDEwMi44IDEyNS41LDEwNS41IDEyNS4zLDEwOC4zIEMgMTI1LjEsMTExLjEgMTI0LjgsMTEzLjUgMTIzLjcsMTE3LjQgQyAxMjIuNiwxMjEuNCAxMTkuMiwxMjkuOSAxMTguNywxMzIuMSBDIDExOC4yLDEzNC4zIDExOS41LDEzMi4xIDEyMC42LDEzMC43IEMgMTIxLjgsMTI5LjQgMTI0LjMsMTI2LjIgMTI1LjYsMTI0LjEgQyAxMjYuOSwxMjIuMCAxMjcuNSwxMjAuOCAxMjguNCwxMTguMyBDIDEyOS4yLDExNS44IDEyOS42LDEwOS4xIDEzMC42LDEwOS4xIEMgMTMxLjYsMTA5LjEgMTMzLjcsMTE1LjYgMTM0LjUsMTE4LjMgQyAxMzUuMiwxMjAuOSAxMzUuMiwxMjIuNyAxMzUuMCwxMjQuOSBDIDEzNC44LDEyNy4xIDEzNC40LDEyOS4wIDEzMy40LDEzMS42IEMgMTMyLjMsMTM0LjEgMTMwLjAsMTM4LjEgMTI4LjksMTQwLjQgQyAxMjcuOSwxNDIuOCAxMjcuNCwxNDMuNiAxMjcuMCwxNDUuNyBDIDEyNi42LDE0Ny43IDEyOS4zLDE1NC45IDEyNi40LDE1Mi42IEMgMTIzLjYsMTUwLjMgMTE1LjUsMTM5LjkgMTA5LjgsMTMyLjEgQyAxMDQuMiwxMjQuMyA5Ni43LDExMi43IDkyLjQsMTA1LjggQyA4OC4xLDk4LjkgODYuOSw5Ni4zIDgzLjgsOTAuNiBDIDgwLjgsODQuOSA3OC4wLDc5LjggNzQuMSw3MS41IEMgNzAuMiw2My4xIDYyLjksNDUuNyA2MC42LDQwLjUgQyA1OC4yLDM1LjMgNjAuMCw0MC4yIDYwLjAsNDAuNSBDIDYwLjAsNDAuOCA1OS41LDM5LjcgNjAuMyw0Mi4xIEMgNjEuMSw0NC42IDYyLjYsNDkuOSA2NC43LDU1LjIgQyA2Ni44LDYwLjQgNjkuNSw2Ni45IDcyLjcsNzMuNyBDIDc2LjAsODAuNSA4MC4xLDg4LjUgODQuNCw5Ni4xIEMgODguNywxMDMuNyA5NC4wLDExMi40IDk4LjUsMTE5LjQgQyAxMDMuMCwxMjYuMyAxMDcuMiwxMzIuMiAxMTEuNSwxMzcuOSBDIDExNS44LDE0My43IDEyMC40LDE0OS4zIDEyNC41LDE1NC4wIEMgMTI4LjYsMTU4LjcgMTMxLjQsMTYxLjggMTM1LjgsMTY2LjIgQyAxNDAuMywxNzAuNSAxNDkuMCwxNzcuNyAxNTEuMSwxODAuMCBDIDE1My4xLDE4Mi4zIDE0OS4zLDE4MC4yIDE0OC4wLDE4MC4wIEMgMTQ2LjcsMTc5LjggMTQ1LjcsMTgwLjYgMTQzLjMsMTc4LjkgQyAxNDAuOSwxNzcuMSAxMzYuOCwxNzIuOCAxMzMuNiwxNjkuNSBDIDEzMC41LDE2Ni4yIDEyNi43LDE2MS41IDEyNC41LDE1OS4yIEMgMTIyLjMsMTU2LjkgMTIxLjksMTU2LjUgMTIwLjMsMTU1LjYgQyAxMTguOCwxNTQuOCAxMTguMCwxNTQuNSAxMTUuNCwxNTQuMyBDIDExMi43LDE1NC4wIDEwNy45LDE1NC41IDEwNC42LDE1NC4zIEMgMTAxLjIsMTU0LjAgOTguMCwxNTMuNyA5NS4yLDE1Mi45IEMgOTIuMywxNTIuMCA4OS45LDE1MC45IDg3LjQsMTQ5LjMgQyA4NS4wLDE0Ny42IDgxLjYsMTQ0LjEgODAuNSwxNDIuOSBDIDc5LjMsMTQxLjggNzkuMiwxNDIuMiA4MC41LDE0Mi40IEMgODEuNywxNDIuNSA4NS41LDE0My41IDg4LjAsMTQzLjcgQyA5MC40LDE0NC4wIDkzLjEsMTQzLjggOTUuNCwxNDMuNyBDIDk3LjgsMTQzLjYgMTAwLjksMTQzLjQgMTAyLjEsMTQzLjIgQyAxMDMuMywxNDMuMCAxMDUuMSwxNDMuMiAxMDIuNiwxNDIuNiBDIDEwMC4yLDE0Mi4wIDkxLjgsMTQwLjkgODcuNCwxMzkuNiBDIDgzLjAsMTM4LjMgNzkuMywxMzguMCA3Ni4xLDEzNC45IEMgNzIuOCwxMzEuOCA3MC41LDEyNi4zIDY3LjgsMTIxLjAgQyA2NS4wLDExNS44IDYxLjIsMTA3LjQgNTkuNCwxMDMuMyBDIDU3LjcsOTkuMiA1Ni44LDk3LjAgNTcuMiw5Ni40IEMgNTcuNiw5NS44IDYwLjEsOTguNSA2MS45LDk5LjQgQyA2My43LDEwMC40IDY1LjMsMTAxLjIgNjguMCwxMDIuMiBDIDcwLjgsMTAzLjIgNzYuMywxMDQuOSA3OC41LDEwNS41IEMgODAuOCwxMDYuMSA4My41LDEwNy44IDgxLjMsMTA1LjggQyA3OS4xLDEwMy45IDY5LjksOTcuNiA2NS4zLDkzLjkgQyA2MC42LDkwLjMgNTUuNyw4NS45IDUzLjYsODMuOSBDIDUxLjYsODIuMCA1My43LDg0LjkgNTMuMSw4Mi4zIEMgNTIuNSw3OS43IDUwLjcsNzIuNiA1MC4wLDY4LjQgQyA0OS40LDY0LjIgNDguNSw1OC4yIDQ5LjIsNTcuMSBDIDQ5LjksNTYuMCA1Mi44LDYwLjggNTQuNSw2Mi4xIEMgNTYuMiw2My40IDU4LjMsNjQuMyA1OS40LDY0LjggQyA2MC42LDY1LjQgNjIuNCw2Ni43IDYxLjQsNjUuMSBDIDYwLjQsNjMuNiA1NS4yLDU3LjggNTMuNCw1NS40IEMgNTEuNSw1My4wIDUxLjAsNTIuMSA1MC4zLDUwLjcgQyA0OS42LDQ5LjMgNDkuMCw0OS45IDQ4LjksNDcuMSBDIDQ4LjgsNDQuMyA0OS4wLDM4LjQgNDkuOCwzMy44IEMgNTAuNSwyOS4zIDUzLjEsMjIuMCA1My40LDIwLjAgQyA1My42LDE4LjAgNTEuNCwyMS45IDUxLjQsMjEuOSBaIiBmaWxsPSJ1cmwoI2cpIi8+PC9nPjwvc3ZnPg==" />
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIkluc2NyaWJlIiwgInNob3J0X25hbWUiOiAiSW5zY3JpYmUiLCAiZGVzY3JpcHRpb24iOiAiWW91ciBwcm9mZXNzaW9uYWwgdm9pY2UgYWN0aW5nIHNjcmlwdCBsaWJyYXJ5IiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwZjFhMzQiLCAidGhlbWVfY29sb3IiOiAiIzBmMWEzNCIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBeU1EQWdNakF3SWo0OFpHVm1jejQ4Y21Ga2FXRnNSM0poWkdsbGJuUWdhV1E5SW1KbklpQmplRDBpTlRBbElpQmplVDBpTkRJbElpQnlQU0kzTWlVaVBqeHpkRzl3SUc5bVpuTmxkRDBpTUNVaUlITjBiM0F0WTI5c2IzSTlJaU15TmpRd05tWWlMejQ4YzNSdmNDQnZabVp6WlhROUlqRXdNQ1VpSUhOMGIzQXRZMjlzYjNJOUlpTXdaakZoTXpRaUx6NDhMM0poWkdsaGJFZHlZV1JwWlc1MFBqeHNhVzVsWVhKSGNtRmthV1Z1ZENCcFpEMGlaeUlnZURFOUlqQWlJSGt4UFNJd0lpQjRNajBpTVNJZ2VUSTlJakVpUGp4emRHOXdJRzltWm5ObGREMGlNQ1VpSUhOMGIzQXRZMjlzYjNJOUlpTmxZMlEwT0RnaUx6NDhjM1J2Y0NCdlptWnpaWFE5SWpFd01DVWlJSE4wYjNBdFkyOXNiM0k5SWlOak9XRTROR0VpTHo0OEwyeHBibVZoY2tkeVlXUnBaVzUwUGp3dlpHVm1jejQ4WTJseVkyeGxJR040UFNJeE1EQWlJR041UFNJeE1EQWlJSEk5SWprMklpQm1hV3hzUFNKMWNtd29JMkpuS1NJdlBqeGphWEpqYkdVZ1kzZzlJakV3TUNJZ1kzazlJakV3TUNJZ2NqMGlPVEFpSUdacGJHdzlJbTV2Ym1VaUlITjBjbTlyWlQwaUkyTTVZVGcwWVNJZ2MzUnliMnRsTFhkcFpIUm9QU0l5SWk4K1BHY2dkSEpoYm5ObWIzSnRQU0owY21GdWMyeGhkR1VvTVRBd0lERXdNQ2tnYzJOaGJHVW9NQzQzTWlrZ2RISmhibk5zWVhSbEtDMHhNREFnTFRFd01Da2lQanh3WVhSb0lHUTlJazBnTlRFdU5Dd3lNUzQ1SUVNZ05URXVOU3d5TVM0NUlEVXdMamdzTVRjdU9DQTFNeTQyTERJd0xqQWdReUExTmk0MUxESXlMaklnTmpVdU1pd3pNUzQzSURZNExqWXNNelF1T1NCRElEY3hMamtzTXpndU1pQTNNaTQxTERNMUxqVWdOek11T0N3ek9TNDBJRU1nTnpVdU1TdzBNeTR6SURjMUxqVXNOVFl1TUNBM05pNHpMRFU0TGpJZ1F5QTNOeTR5TERZd0xqUWdOemd1TXl3MU5DNDRJRGM1TGpFc05USXVOeUJESURjNUxqa3NOVEF1TlNBM09TNHhMRFEwTGprZ09ERXVNQ3cwTlM0MUlFTWdPRE11TUN3ME5pNHdJRGczTGprc05USXVOQ0E1TVM0d0xEVTJMakFnUXlBNU5DNHhMRFU1TGpVZ09Ua3VNQ3cyTVM0eklEazVMamtzTmpZdU9DQkRJREV3TUM0M0xEY3lMaklnT1RjdU1DdzRNaTR5SURrMkxqTXNPRGd1TnlCRElEazFMallzT1RVdU1TQTVOUzQzTERFd01pNDNJRGsxTGpjc01UQTFMalVnUXlBNU5TNDRMREV3T0M0MElEazFMamtzTVRBNExqQWdPVFl1TlN3eE1EVXVOU0JESURrM0xqSXNNVEF6TGpBZ09UZ3VNU3c1TlM0NUlEazVMallzT1RBdU5pQkRJREV3TVM0eExEZzFMak1nTVRBekxqSXNOelV1TVNBeE1EVXVOQ3czTXk0M0lFTWdNVEEzTGpZc056SXVNeUF4TURrdU9DdzNPQzQxSURFeE1pNDJMRGd5TGpNZ1F5QXhNVFV1TkN3NE5pNHhJREV5TUM0ekxEa3pMallnTVRJeUxqTXNPVFl1TnlCRElERXlOQzR6TERrNUxqZ2dNVEkwTGpNc09UZ3VPU0F4TWpRdU9Dd3hNREF1T0NCRElERXlOUzR6TERFd01pNDRJREV5TlM0MUxERXdOUzQxSURFeU5TNHpMREV3T0M0eklFTWdNVEkxTGpFc01URXhMakVnTVRJMExqZ3NNVEV6TGpVZ01USXpMamNzTVRFM0xqUWdReUF4TWpJdU5pd3hNakV1TkNBeE1Ua3VNaXd4TWprdU9TQXhNVGd1Tnl3eE16SXVNU0JESURFeE9DNHlMREV6TkM0eklERXhPUzQxTERFek1pNHhJREV5TUM0MkxERXpNQzQzSUVNZ01USXhMamdzTVRJNUxqUWdNVEkwTGpNc01USTJMaklnTVRJMUxqWXNNVEkwTGpFZ1F5QXhNall1T1N3eE1qSXVNQ0F4TWpjdU5Td3hNakF1T0NBeE1qZ3VOQ3d4TVRndU15QkRJREV5T1M0eUxERXhOUzQ0SURFeU9TNDJMREV3T1M0eElERXpNQzQyTERFd09TNHhJRU1nTVRNeExqWXNNVEE1TGpFZ01UTXpMamNzTVRFMUxqWWdNVE0wTGpVc01URTRMak1nUXlBeE16VXVNaXd4TWpBdU9TQXhNelV1TWl3eE1qSXVOeUF4TXpVdU1Dd3hNalF1T1NCRElERXpOQzQ0TERFeU55NHhJREV6TkM0MExERXlPUzR3SURFek15NDBMREV6TVM0MklFTWdNVE15TGpNc01UTTBMakVnTVRNd0xqQXNNVE00TGpFZ01USTRMamtzTVRRd0xqUWdReUF4TWpjdU9Td3hOREl1T0NBeE1qY3VOQ3d4TkRNdU5pQXhNamN1TUN3eE5EVXVOeUJESURFeU5pNDJMREUwTnk0M0lERXlPUzR6TERFMU5DNDVJREV5Tmk0MExERTFNaTQySUVNZ01USXpMallzTVRVd0xqTWdNVEUxTGpVc01UTTVMamtnTVRBNUxqZ3NNVE15TGpFZ1F5QXhNRFF1TWl3eE1qUXVNeUE1Tmk0M0xERXhNaTQzSURreUxqUXNNVEExTGpnZ1F5QTRPQzR4TERrNExqa2dPRFl1T1N3NU5pNHpJRGd6TGpnc09UQXVOaUJESURnd0xqZ3NPRFF1T1NBM09DNHdMRGM1TGpnZ056UXVNU3czTVM0MUlFTWdOekF1TWl3Mk15NHhJRFl5TGprc05EVXVOeUEyTUM0MkxEUXdMalVnUXlBMU9DNHlMRE0xTGpNZ05qQXVNQ3cwTUM0eUlEWXdMakFzTkRBdU5TQkRJRFl3TGpBc05EQXVPQ0ExT1M0MUxETTVMamNnTmpBdU15dzBNaTR4SUVNZ05qRXVNU3cwTkM0MklEWXlMallzTkRrdU9TQTJOQzQzTERVMUxqSWdReUEyTmk0NExEWXdMalFnTmprdU5TdzJOaTQ1SURjeUxqY3NOek11TnlCRElEYzJMakFzT0RBdU5TQTRNQzR4TERnNExqVWdPRFF1TkN3NU5pNHhJRU1nT0RndU55d3hNRE11TnlBNU5DNHdMREV4TWk0MElEazRMalVzTVRFNUxqUWdReUF4TURNdU1Dd3hNall1TXlBeE1EY3VNaXd4TXpJdU1pQXhNVEV1TlN3eE16Y3VPU0JESURFeE5TNDRMREUwTXk0M0lERXlNQzQwTERFME9TNHpJREV5TkM0MUxERTFOQzR3SUVNZ01USTRMallzTVRVNExqY2dNVE14TGpRc01UWXhMamdnTVRNMUxqZ3NNVFkyTGpJZ1F5QXhOREF1TXl3eE56QXVOU0F4TkRrdU1Dd3hOemN1TnlBeE5URXVNU3d4T0RBdU1DQkRJREUxTXk0eExERTRNaTR6SURFME9TNHpMREU0TUM0eUlERTBPQzR3TERFNE1DNHdJRU1nTVRRMkxqY3NNVGM1TGpnZ01UUTFMamNzTVRnd0xqWWdNVFF6TGpNc01UYzRMamtnUXlBeE5EQXVPU3d4TnpjdU1TQXhNell1T0N3eE56SXVPQ0F4TXpNdU5pd3hOamt1TlNCRElERXpNQzQxTERFMk5pNHlJREV5Tmk0M0xERTJNUzQxSURFeU5DNDFMREUxT1M0eUlFTWdNVEl5TGpNc01UVTJMamtnTVRJeExqa3NNVFUyTGpVZ01USXdMak1zTVRVMUxqWWdReUF4TVRndU9Dd3hOVFF1T0NBeE1UZ3VNQ3d4TlRRdU5TQXhNVFV1TkN3eE5UUXVNeUJESURFeE1pNDNMREUxTkM0d0lERXdOeTQ1TERFMU5DNDFJREV3TkM0MkxERTFOQzR6SUVNZ01UQXhMaklzTVRVMExqQWdPVGd1TUN3eE5UTXVOeUE1TlM0eUxERTFNaTQ1SUVNZ09USXVNeXd4TlRJdU1DQTRPUzQ1TERFMU1DNDVJRGczTGpRc01UUTVMak1nUXlBNE5TNHdMREUwTnk0MklEZ3hMallzTVRRMExqRWdPREF1TlN3eE5ESXVPU0JESURjNUxqTXNNVFF4TGpnZ056a3VNaXd4TkRJdU1pQTRNQzQxTERFME1pNDBJRU1nT0RFdU55d3hOREl1TlNBNE5TNDFMREUwTXk0MUlEZzRMakFzTVRRekxqY2dReUE1TUM0MExERTBOQzR3SURrekxqRXNNVFF6TGpnZ09UVXVOQ3d4TkRNdU55QkRJRGszTGpnc01UUXpMallnTVRBd0xqa3NNVFF6TGpRZ01UQXlMakVzTVRRekxqSWdReUF4TURNdU15d3hORE11TUNBeE1EVXVNU3d4TkRNdU1pQXhNREl1Tml3eE5ESXVOaUJESURFd01DNHlMREUwTWk0d0lEa3hMamdzTVRRd0xqa2dPRGN1TkN3eE16a3VOaUJESURnekxqQXNNVE00TGpNZ056a3VNeXd4TXpndU1DQTNOaTR4TERFek5DNDVJRU1nTnpJdU9Dd3hNekV1T0NBM01DNDFMREV5Tmk0eklEWTNMamdzTVRJeExqQWdReUEyTlM0d0xERXhOUzQ0SURZeExqSXNNVEEzTGpRZ05Ua3VOQ3d4TURNdU15QkRJRFUzTGpjc09Ua3VNaUExTmk0NExEazNMakFnTlRjdU1pdzVOaTQwSUVNZ05UY3VOaXc1TlM0NElEWXdMakVzT1RndU5TQTJNUzQ1TERrNUxqUWdReUEyTXk0M0xERXdNQzQwSURZMUxqTXNNVEF4TGpJZ05qZ3VNQ3d4TURJdU1pQkRJRGN3TGpnc01UQXpMaklnTnpZdU15d3hNRFF1T1NBM09DNDFMREV3TlM0MUlFTWdPREF1T0N3eE1EWXVNU0E0TXk0MUxERXdOeTQ0SURneExqTXNNVEExTGpnZ1F5QTNPUzR4TERFd015NDVJRFk1TGprc09UY3VOaUEyTlM0ekxEa3pMamtnUXlBMk1DNDJMRGt3TGpNZ05UVXVOeXc0TlM0NUlEVXpMallzT0RNdU9TQkRJRFV4TGpZc09ESXVNQ0ExTXk0M0xEZzBMamtnTlRNdU1TdzRNaTR6SUVNZ05USXVOU3czT1M0M0lEVXdMamNzTnpJdU5pQTFNQzR3TERZNExqUWdReUEwT1M0MExEWTBMaklnTkRndU5TdzFPQzR5SURRNUxqSXNOVGN1TVNCRElEUTVMamtzTlRZdU1DQTFNaTQ0TERZd0xqZ2dOVFF1TlN3Mk1pNHhJRU1nTlRZdU1pdzJNeTQwSURVNExqTXNOalF1TXlBMU9TNDBMRFkwTGpnZ1F5QTJNQzQyTERZMUxqUWdOakl1TkN3Mk5pNDNJRFl4TGpRc05qVXVNU0JESURZd0xqUXNOak11TmlBMU5TNHlMRFUzTGpnZ05UTXVOQ3cxTlM0MElFTWdOVEV1TlN3MU15NHdJRFV4TGpBc05USXVNU0ExTUM0ekxEVXdMamNnUXlBME9TNDJMRFE1TGpNZ05Ea3VNQ3cwT1M0NUlEUTRMamtzTkRjdU1TQkRJRFE0TGpnc05EUXVNeUEwT1M0d0xETTRMalFnTkRrdU9Dd3pNeTQ0SUVNZ05UQXVOU3d5T1M0eklEVXpMakVzTWpJdU1DQTFNeTQwTERJd0xqQWdReUExTXk0MkxERTRMakFnTlRFdU5Dd3lNUzQ1SURVeExqUXNNakV1T1NCYUlpQm1hV3hzUFNKMWNtd29JMmNwSWk4K1BDOW5Qand2YzNablBnPT0iLCAic2l6ZXMiOiAiYW55IiwgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIsICJwdXJwb3NlIjogImFueSJ9XX0=" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&family=Crimson+Pro:wght@300;400;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Merriweather:wght@300;400;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Lexend:wght@300;400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <style>
+    /* OpenDyslexic — dyslexia-friendly font */
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.woff') format('woff');
+      font-weight: normal; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-bold.woff') format('woff');
+      font-weight: bold; font-style: normal; font-display: swap;
+    }
+  </style>
+<style>
+/* ============================================================
+   Inscribe — Theme System + Full Styles
+   ============================================================ */
+
+/* ── THEMES ── */
+[data-theme="dark-studio"] {
+  --bg: #141210; --bg-2: #1c1916; --bg-3: #242018; --bg-4: #2e2820;
+  --surface: #1f1c17; --border: #2e2820; --border-2: #3d3528;
+  --accent: #c9973a; --accent-2: #e8b85c; --accent-dim: rgba(201,151,58,0.15); --accent-glow: rgba(201,151,58,0.08);
+  --text-1: #f0e8d8; --text-2: #b8a88a; --text-3: #7a6d58; --text-4: #4a4035;
+  --red: #c0544a; --green: #5a9a6a;
+}
+[data-theme="midnight-blue"] {
+  --bg: #0d1117; --bg-2: #161b22; --bg-3: #1c2230; --bg-4: #243040;
+  --surface: #161b22; --border: #21293d; --border-2: #2d3f5a;
+  --accent: #58a6ff; --accent-2: #79c0ff; --accent-dim: rgba(88,166,255,0.15); --accent-glow: rgba(88,166,255,0.08);
+  --text-1: #e6edf3; --text-2: #8b949e; --text-3: #4d5566; --text-4: #30363d;
+  --red: #f85149; --green: #3fb950;
+}
+[data-theme="forest"] {
+  --bg: #0d1a0f; --bg-2: #121f14; --bg-3: #192819; --bg-4: #1f3020;
+  --surface: #141e15; --border: #1e3020; --border-2: #2a4030;
+  --accent: #4caf6e; --accent-2: #6fcf8e; --accent-dim: rgba(76,175,110,0.15); --accent-glow: rgba(76,175,110,0.08);
+  --text-1: #e0f0e3; --text-2: #8aaa8e; --text-3: #4a6a4e; --text-4: #2a3e2c;
+  --red: #e05a4a; --green: #4caf6e;
+}
+[data-theme="crimson"] {
+  --bg: #120a0a; --bg-2: #1a0f0f; --bg-3: #221515; --bg-4: #2c1c1c;
+  --surface: #1a0f0f; --border: #2c1c1c; --border-2: #3d2525;
+  --accent: #e05555; --accent-2: #f07777; --accent-dim: rgba(224,85,85,0.15); --accent-glow: rgba(224,85,85,0.08);
+  --text-1: #f5e8e8; --text-2: #b89090; --text-3: #7a5555; --text-4: #4a3535;
+  --red: #e05555; --green: #5a9a6a;
+}
+[data-theme="light-paper"] {
+  --bg: #f5f0e8; --bg-2: #ede8dc; --bg-3: #e0d8c8; --bg-4: #cfc8b8;
+  --surface: #ede8dc; --border: #d0c8b8; --border-2: #b8b0a0;
+  --accent: #8b5e2a; --accent-2: #a06e30; --accent-dim: rgba(139,94,42,0.12); --accent-glow: rgba(139,94,42,0.06);
+  --text-1: #1a150e; --text-2: #4a3e2e; --text-3: #7a6e5e; --text-4: #a09080;
+  --red: #c0342a; --green: #2a6a3a;
+}
+[data-theme="neon-noir"] {
+  --bg: #080810; --bg-2: #0e0e1c; --bg-3: #141428; --bg-4: #1a1a34;
+  --surface: #0e0e1c; --border: #1a1a34; --border-2: #252545;
+  --accent: #b044ff; --accent-2: #cc77ff; --accent-dim: rgba(176,68,255,0.15); --accent-glow: rgba(176,68,255,0.08);
+  --text-1: #e8e0ff; --text-2: #9080c0; --text-3: #504070; --text-4: #302050;
+  --red: #ff4466; --green: #44ffaa;
+}
+
+/* ── BASE ── */
+:root {
+  --radius: 6px; --radius-lg: 12px;
+  --sidebar-w: 260px; --topbar-h: 60px;
+  --ff-display: 'Playfair Display', Georgia, serif;
+  --ff-body: 'Crimson Pro', Georgia, serif;
+  --ff-mono: 'JetBrains Mono', monospace;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.6);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.8);
+  --font-size-content: 1.12rem;
+  --line-height-content: 2;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body); font-size: 1.05rem; min-height: 100vh; overflow: hidden; transition: background 0.3s, color 0.3s; }
+#app { display: flex; height: 100vh; overflow: hidden; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* ── SIDEBAR ── */
+.sidebar { width: var(--sidebar-w); background: var(--bg-2); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; height: 100vh; overflow-y: auto; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); z-index: 50; }
+.sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 18px 16px; border-bottom: 1px solid var(--border); }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon { display: inline-flex; align-items: center; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 40%, transparent)); }
+.logo-text { font-family: var(--ff-display); font-size: 1.2rem; color: var(--accent-2); letter-spacing: 0.02em; }
+.sidebar-close { display: none; background: none; border: none; color: var(--text-3); cursor: pointer; font-size: 1rem; padding: 4px 8px; border-radius: var(--radius); }
+.sidebar-close:hover { color: var(--text-1); background: var(--bg-4); }
+.sidebar-nav { flex: 1; padding: 12px 10px; overflow-y: auto; }
+.nav-section-label { font-family: var(--ff-mono); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-4); padding: 14px 8px 6px; }
+.nav-item { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 10px; border-radius: var(--radius); border: none; background: none; color: var(--text-2); font-family: var(--ff-body); font-size: 0.95rem; cursor: pointer; text-align: left; transition: background 0.15s, color 0.15s; }
+.nav-item:hover { background: var(--bg-3); color: var(--text-1); }
+.nav-item.active { background: var(--accent-dim); color: var(--accent-2); }
+.nav-item.active .nav-icon { color: var(--accent); }
+.nav-icon { font-size: 0.75rem; flex-shrink: 0; }
+.nav-count { margin-left: auto; font-family: var(--ff-mono); font-size: 0.65rem; background: var(--bg-4); color: var(--text-3); padding: 2px 6px; border-radius: 10px; }
+.nav-tag-list { display: flex; flex-direction: column; gap: 2px; }
+.nav-tag-btn { display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; border-radius: var(--radius); border: none; background: none; color: var(--text-3); font-family: var(--ff-body); font-size: 0.88rem; cursor: pointer; text-align: left; transition: all 0.15s; }
+.nav-tag-btn:hover { color: var(--text-1); background: var(--bg-3); }
+.nav-tag-btn.active { color: var(--accent-2); background: var(--accent-dim); }
+.nav-tag-count { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-4); }
+.sidebar-bottom { padding: 10px; display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--border); }
+.sidebar-bottom-row { display: flex; gap: 6px; }
+.sidebar-action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px; border-radius: var(--radius); border: 1px solid var(--border-2); background: none; color: var(--text-2); font-family: var(--ff-body); font-size: 0.82rem; cursor: pointer; transition: all 0.15s; }
+.sidebar-action-btn:hover { background: var(--bg-3); color: var(--text-1); border-color: var(--text-3); }
+.add-script-btn { padding: 12px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-family: var(--ff-display); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; letter-spacing: 0.02em; width: 100%; }
+.add-script-btn:hover { background: var(--accent-2); transform: translateY(-1px); }
+.sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 40; backdrop-filter: blur(2px); }
+
+/* ── MAIN ── */
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+.topbar { height: var(--topbar-h); display: flex; align-items: center; gap: 10px; padding: 0 20px 0 16px; border-bottom: 1px solid var(--border); background: var(--bg-2); flex-shrink: 0; }
+.menu-toggle { display: none; background: none; border: none; color: var(--text-2); font-size: 1.3rem; cursor: pointer; padding: 6px; border-radius: var(--radius); flex-shrink: 0; }
+.menu-toggle:hover { color: var(--text-1); background: var(--bg-4); }
+.search-wrap { flex: 0 1 400px; display: flex; align-items: center; background: var(--bg-3); border: 1px solid var(--border); border-radius: 30px; padding: 0 14px; gap: 8px; transition: border-color 0.2s; }
+.search-wrap:focus-within { border-color: var(--accent); }
+.search-icon { color: var(--text-3); font-size: 1.1rem; flex-shrink: 0; }
+.search-input { flex: 1; background: none; border: none; outline: none; color: var(--text-1); font-family: var(--ff-body); font-size: 1rem; padding: 10px 0; }
+.search-input::placeholder { color: var(--text-3); }
+.search-clear { background: none; border: none; color: var(--text-3); cursor: pointer; font-size: 0.75rem; padding: 2px 4px; opacity: 0; pointer-events: none; transition: opacity 0.15s; border-radius: 50%; }
+.search-clear.visible { opacity: 1; pointer-events: all; }
+.topbar-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; padding-right: 4px; }
+.icon-btn { background: none; border: 1px solid var(--border); color: var(--text-2); width: 36px; height: 36px; border-radius: var(--radius); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.icon-btn:hover { color: var(--text-1); border-color: var(--border-2); background: var(--bg-3); }
+.add-btn-top { background: var(--accent); border-color: var(--accent); color: var(--bg); font-size: 1.3rem; font-weight: 700; }
+.add-btn-top:hover { background: var(--accent-2); border-color: var(--accent-2); color: var(--bg); }
+
+/* ── FILTER BAR ── */
+.filter-bar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--bg-2); flex-shrink: 0; flex-wrap: wrap; min-height: 48px; }
+.filter-label { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--text-4); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; }
+.filter-chips { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.chip { padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-2); background: none; color: var(--text-3); font-family: var(--ff-mono); font-size: 0.68rem; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+.chip:hover { color: var(--text-1); border-color: var(--text-3); }
+.chip.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-2); }
+.active-filters { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
+.active-filter-chip { display: flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 20px; background: var(--accent-dim); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); color: var(--accent-2); font-family: var(--ff-mono); font-size: 0.65rem; }
+.active-filter-chip button { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 0.7rem; padding: 0; line-height: 1; }
+.results-count { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--text-4); margin-left: auto; white-space: nowrap; }
+
+/* ── SCRIPTS AREA ── */
+.scripts-container { flex: 1; overflow-y: auto; padding: 20px; }
+.scripts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.scripts-grid.list-view { grid-template-columns: 1fr; gap: 8px; }
+
+/* ── SCRIPT CARD ── */
+.script-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px 20px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; animation: cardIn 0.3s ease both; }
+@keyframes cardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.script-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-dim), transparent); opacity: 0; transition: opacity 0.2s; }
+.script-card:hover { border-color: var(--border-2); background: var(--bg-3); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.script-card:hover::before { opacity: 1; }
+.script-card.favorite .card-fav { color: var(--accent); }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.card-genre { font-family: var(--ff-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); padding: 2px 8px; background: var(--accent-glow); border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); border-radius: 3px; }
+.card-fav { background: none; border: none; color: var(--text-4); font-size: 0.8rem; cursor: pointer; padding: 2px; transition: color 0.15s, transform 0.15s; flex-shrink: 0; }
+.card-fav:hover { color: var(--accent-2); transform: scale(1.2); }
+.card-title { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 700; color: var(--text-1); line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-author { font-size: 0.85rem; color: var(--text-3); margin-bottom: 8px; font-style: italic; }
+.card-author em { font-style: normal; color: var(--text-2); }
+.card-excerpt { font-size: 0.88rem; color: var(--text-3); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 12px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.tag-pill { font-family: var(--ff-mono); font-size: 0.6rem; padding: 2px 7px; border-radius: 3px; background: var(--bg-4); color: var(--text-3); border: 1px solid var(--border-2); letter-spacing: 0.04em; }
+.card-meta { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 10px; }
+.card-stats { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-4); display: flex; gap: 10px; }
+.card-lang { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-3); background: var(--bg-4); padding: 2px 6px; border-radius: 3px; }
+.list-view .script-card { display: grid; grid-template-columns: 1fr auto; gap: 0; padding: 12px 16px; align-items: center; border-radius: var(--radius); }
+.list-view .script-card:hover { transform: none; }
+.list-view .card-excerpt { display: none; }
+.list-view .card-tags { margin-bottom: 4px; }
+.list-view .card-meta { border-top: none; padding-top: 0; }
+.list-view .card-top { margin-bottom: 4px; }
+.list-view .card-title { font-size: 1rem; -webkit-line-clamp: 1; }
+.list-view .card-author { margin-bottom: 4px; }
+
+/* ── EMPTY STATE ── */
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; text-align: center; gap: 12px; }
+.empty-icon { font-size: 3.5rem; opacity: 0.3; }
+.empty-title { font-family: var(--ff-display); font-size: 1.5rem; color: var(--text-2); }
+.empty-sub { color: var(--text-3); font-size: 0.95rem; }
+.add-script-btn-empty { margin-top: 8px; padding: 10px 24px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-family: var(--ff-display); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: background 0.2s; }
+.add-script-btn-empty:hover { background: var(--accent-2); }
+
+/* ── MODAL BASE ── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(10,8,5,0.85); backdrop-filter: blur(6px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal { background: var(--bg-2); border: 1px solid var(--border-2); border-radius: var(--radius-lg); width: 100%; max-width: 680px; max-height: 90vh; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); transform: translateY(20px) scale(0.98); transition: transform 0.25s cubic-bezier(0.4,0,0.2,1); }
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px 14px; border-bottom: 1px solid var(--border); flex-shrink: 0; gap: 10px; }
+.modal-title { font-family: var(--ff-display); font-size: 1.15rem; color: var(--text-1); }
+.modal-close { background: none; border: none; color: var(--text-3); font-size: 0.9rem; cursor: pointer; padding: 6px 8px; border-radius: var(--radius); transition: all 0.15s; flex-shrink: 0; }
+.modal-close:hover { color: var(--text-1); background: var(--bg-4); }
+.modal-body { padding: 20px 22px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group--sm { min-width: 160px; }
+.form-label { font-family: var(--ff-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+.form-hint { color: var(--text-4); font-size: 0.55rem; text-transform: none; letter-spacing: 0; }
+.form-input, .form-textarea, .form-select { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--radius); padding: 9px 12px; color: var(--text-1); font-family: var(--ff-body); font-size: 0.95rem; outline: none; transition: border-color 0.15s; width: 100%; }
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--accent); }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-4); }
+.form-textarea { resize: vertical; line-height: 1.7; }
+.form-select option { background: var(--bg-3); }
+.char-count { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--text-4); text-align: right; margin-top: 4px; }
+.modal-footer { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 14px 22px 18px; border-top: 1px solid var(--border); flex-shrink: 0; }
+.btn { padding: 9px 20px; border-radius: var(--radius); border: none; font-family: var(--ff-display); font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.15s; letter-spacing: 0.02em; }
+.btn-primary { background: var(--accent); color: var(--bg); }
+.btn-primary:hover { background: var(--accent-2); }
+.btn-ghost { background: none; border: 1px solid var(--border-2); color: var(--text-2); }
+.btn-ghost:hover { color: var(--text-1); border-color: var(--text-3); background: var(--bg-3); }
+.btn-delete { color: var(--red) !important; margin-right: auto; }
+.btn-delete:hover { border-color: var(--red) !important; }
+.btn-danger { background: var(--red); color: #fff; }
+.btn-danger:hover { opacity: 0.85; }
+
+/* ── VIEW MODAL ── */
+.modal--view { max-width: 820px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
+.view-fab { position: absolute; top: 14px; right: 14px; z-index: 10; display: flex; gap: 4px; background: color-mix(in srgb, var(--bg-2) 85%, transparent); backdrop-filter: blur(8px); border: 1px solid var(--border-2); border-radius: 30px; padding: 4px 6px; box-shadow: var(--shadow-sm); }
+.view-fab-btn { background: none; border: none; color: var(--text-3); font-size: 0.85rem; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.view-fab-btn:hover { color: var(--text-1); background: var(--bg-4); }
+.view-fab-close:hover { color: var(--red); }
+.view-body { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
+.view-header-scrollable { padding: 28px 90px 0 28px; border-bottom: 1px solid var(--border); background: var(--bg-2); }
+.view-meta-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.view-genre { font-family: var(--ff-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); padding: 2px 8px; background: var(--accent-glow); border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); border-radius: 3px; }
+.view-language { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--text-3); background: var(--bg-4); padding: 2px 8px; border-radius: 3px; border: 1px solid var(--border-2); }
+.view-title { font-family: var(--ff-display); font-size: 1.8rem; font-weight: 700; color: var(--text-1); line-height: 1.2; margin-bottom: 8px; }
+.view-byline { font-size: 0.92rem; color: var(--text-3); font-style: italic; margin-bottom: 10px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.view-character { font-style: normal; font-family: var(--ff-mono); font-size: 0.68rem; color: var(--accent); background: var(--accent-glow); border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); padding: 2px 8px; border-radius: 3px; }
+.view-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.view-stats-row { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; }
+.view-stats, .view-date { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--text-4); }
+.view-notes { margin: 0 -28px; padding: 14px 28px; background: linear-gradient(135deg, var(--accent-glow) 0%, var(--bg-3) 100%); border-left: 3px solid var(--accent); border-top: 1px solid color-mix(in srgb, var(--accent) 15%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 15%, transparent); }
+.view-notes-label { font-family: var(--ff-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; }
+.view-notes-text { font-size: 0.88rem; color: var(--text-2); line-height: 1.65; white-space: pre-wrap; }
+.view-scroll-hint { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-4); letter-spacing: 0.08em; transition: opacity 0.4s; }
+.view-scroll-hint.hidden { opacity: 0; }
+.scroll-arrow { animation: bounce 1.4s ease infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+
+/* Reactions bar */
+.view-reactions { display: flex; align-items: center; gap: 8px; padding: 14px 28px 6px; flex-wrap: wrap; }
+.reaction-btn { display: flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border-2); background: none; color: var(--text-3); font-family: var(--ff-mono); font-size: 0.68rem; cursor: pointer; transition: all 0.15s; }
+.reaction-btn:hover { background: var(--bg-3); color: var(--text-1); border-color: var(--text-3); }
+.reaction-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent-2); }
+.reaction-btn.active-dislike { background: rgba(192,84,74,0.15); border-color: var(--red); color: var(--red); }
+.reaction-count { font-weight: 500; }
+
+/* Comments */
+.view-comments { padding: 0 28px 30px; }
+.comments-header { font-family: var(--ff-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 14px; padding-top: 20px; border-top: 1px solid var(--border); }
+.comment-composer { display: flex; gap: 10px; margin-bottom: 18px; align-items: flex-start; }
+.comment-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-dim); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; overflow: hidden; }
+.comment-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.comment-input-wrap { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.comment-input { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--radius); padding: 9px 12px; color: var(--text-1); font-family: var(--ff-body); font-size: 0.9rem; outline: none; resize: none; line-height: 1.5; transition: border-color 0.15s; }
+.comment-input:focus { border-color: var(--accent); }
+.comment-input::placeholder { color: var(--text-4); }
+.comment-submit { align-self: flex-end; padding: 6px 14px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-family: var(--ff-mono); font-size: 0.68rem; cursor: pointer; transition: background 0.15s; letter-spacing: 0.04em; }
+.comment-submit:hover { background: var(--accent-2); }
+.comment-list { display: flex; flex-direction: column; gap: 14px; }
+.comment { display: flex; gap: 10px; }
+.comment-body { flex: 1; }
+.comment-meta { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+.comment-author-name { font-family: var(--ff-mono); font-size: 0.68rem; color: var(--accent-2); font-weight: 500; }
+.comment-time { font-family: var(--ff-mono); font-size: 0.58rem; color: var(--text-4); }
+.comment-text { font-size: 0.9rem; color: var(--text-2); line-height: 1.6; }
+.comment-actions { display: flex; gap: 10px; margin-top: 5px; }
+.comment-action { background: none; border: none; color: var(--text-4); font-family: var(--ff-mono); font-size: 0.58rem; cursor: pointer; transition: color 0.15s; display: flex; align-items: center; gap: 3px; padding: 0; }
+.comment-action:hover { color: var(--text-2); }
+.comment-action.liked { color: var(--accent); }
+.no-comments { font-size: 0.85rem; color: var(--text-4); font-style: italic; text-align: center; padding: 20px 0; }
+
+.view-content { padding: 32px 28px 10px; font-family: var(--ff-reading, var(--ff-body)); font-size: var(--font-size-content); line-height: var(--line-height-content); color: var(--text-1); white-space: pre-wrap; word-break: break-word; max-width: 660px; margin: 0 auto; }
+
+/* ── SETTINGS PANEL ── */
+.modal--settings { max-width: 600px; }
+.settings-tabs { display: flex; gap: 2px; padding: 0 22px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.settings-tab { padding: 10px 14px; border: none; background: none; color: var(--text-3); font-family: var(--ff-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.15s; }
+.settings-tab:hover { color: var(--text-1); }
+.settings-tab.active { color: var(--accent-2); border-bottom-color: var(--accent); }
+.settings-panel { display: none; flex-direction: column; gap: 22px; }
+.settings-panel.active { display: flex; }
+.settings-section-title { font-family: var(--ff-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-4); margin-bottom: -8px; }
+.settings-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.settings-label { font-size: 0.92rem; color: var(--text-1); }
+.settings-sub { font-size: 0.78rem; color: var(--text-3); margin-top: 2px; }
+.theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.theme-swatch { border: 2px solid var(--border-2); border-radius: var(--radius); padding: 10px 8px; cursor: pointer; text-align: center; transition: all 0.15s; background: none; }
+.theme-swatch:hover { border-color: var(--text-3); }
+.theme-swatch.active { border-color: var(--accent); }
+.theme-swatch-dot { width: 20px; height: 20px; border-radius: 50%; margin: 0 auto 6px; }
+.theme-swatch-name { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.08em; }
+.toggle-switch { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-track { position: absolute; inset: 0; border-radius: 22px; background: var(--border-2); cursor: pointer; transition: background 0.2s; }
+.toggle-track::before { content: ''; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; border-radius: 50%; background: var(--text-3); transition: transform 0.2s, background 0.2s; }
+.toggle-switch input:checked + .toggle-track { background: var(--accent); }
+.toggle-switch input:checked + .toggle-track::before { transform: translateX(18px); background: var(--bg); }
+.font-size-control { display: flex; align-items: center; gap: 8px; }
+.font-size-control button { width: 28px; height: 28px; border-radius: var(--radius); border: 1px solid var(--border-2); background: var(--bg-3); color: var(--text-1); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.font-size-control button:hover { border-color: var(--accent); color: var(--accent); }
+.font-size-val { font-family: var(--ff-mono); font-size: 0.72rem; color: var(--text-2); min-width: 32px; text-align: center; }
+.danger-zone { border: 1px solid color-mix(in srgb, var(--red) 30%, transparent); border-radius: var(--radius); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.danger-zone-title { font-family: var(--ff-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--red); }
+.export-btn { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--border-2); background: none; color: var(--text-2); border-radius: var(--radius); font-family: var(--ff-body); font-size: 0.88rem; cursor: pointer; transition: all 0.15s; }
+.export-btn:hover { background: var(--bg-3); color: var(--text-1); }
+
+/* ── PROFILE PANEL ── */
+.modal--profile { max-width: 600px; }
+.profile-hero { padding: 28px 22px 20px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid var(--border); }
+.profile-avatar-wrap { position: relative; flex-shrink: 0; }
+.profile-avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--accent-dim); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 2rem; overflow: hidden; cursor: pointer; transition: opacity 0.15s; }
+.profile-avatar:hover { opacity: 0.8; }
+.profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.profile-avatar-hint { font-family: var(--ff-mono); font-size: 0.55rem; color: var(--text-4); text-align: center; margin-top: 4px; }
+.profile-name-block { flex: 1; }
+.profile-display-name { font-family: var(--ff-display); font-size: 1.4rem; color: var(--text-1); line-height: 1.2; }
+.profile-handle { font-family: var(--ff-mono); font-size: 0.72rem; color: var(--text-3); }
+.profile-stats-row { display: flex; gap: 20px; padding: 16px 22px; border-bottom: 1px solid var(--border); }
+.profile-stat { text-align: center; }
+.profile-stat-val { font-family: var(--ff-display); font-size: 1.3rem; color: var(--accent-2); }
+.profile-stat-label { font-family: var(--ff-mono); font-size: 0.58rem; color: var(--text-4); text-transform: uppercase; letter-spacing: 0.08em; }
+.emoji-picker { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 0; }
+.emoji-opt { font-size: 1.4rem; background: none; border: 2px solid transparent; border-radius: var(--radius); padding: 4px; cursor: pointer; transition: all 0.15s; }
+.emoji-opt:hover, .emoji-opt.active { border-color: var(--accent); background: var(--accent-dim); }
+.color-picker-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.color-opt { width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: border-color 0.15s, transform 0.15s; }
+.color-opt:hover { transform: scale(1.15); }
+.color-opt.active { border-color: var(--text-1); }
+.badge-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge { display: flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 20px; background: var(--bg-4); border: 1px solid var(--border-2); font-family: var(--ff-mono); font-size: 0.62rem; color: var(--text-2); }
+.badge.earned { border-color: var(--accent); color: var(--accent-2); background: var(--accent-glow); }
+
+/* ── TOAST ── */
+.toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+.toast { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--radius); padding: 10px 16px; font-family: var(--ff-mono); font-size: 0.72rem; color: var(--text-1); box-shadow: var(--shadow-md); animation: toastIn 0.3s ease; opacity: 1; transition: opacity 0.3s; }
+.toast.out { opacity: 0; }
+@keyframes toastIn { from { transform: translateX(20px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  :root { --sidebar-w: 280px; }
+  .sidebar { position: fixed; top: 0; left: 0; bottom: 0; transform: translateX(-100%); z-index: 50; box-shadow: var(--shadow-lg); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.open { display: block; }
+  .sidebar-close { display: block; }
+  .menu-toggle { display: flex; }
+  .scripts-grid { grid-template-columns: 1fr; }
+  .filter-bar { overflow-x: auto; flex-wrap: nowrap; padding: 8px 12px; }
+  .filter-chips { flex-wrap: nowrap; }
+  .active-filters, .results-count { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-group--sm { min-width: 0; }
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { max-height: 92vh; border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: none; }
+  .modal--view { max-height: 95vh; }
+  .theme-grid { grid-template-columns: repeat(2, 1fr); }
+  .profile-hero { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .topbar { padding: 0 12px; gap: 6px; }
+  .search-wrap { flex: 1; min-width: 0; }
+  .topbar-actions { padding-right: 0; gap: 6px; }
+  #profileBtnTop, #settingsBtnTop { display: none; }
+  .scripts-container { padding: 12px; }
+}
+/* ── THEME BUILDER ── */
+.theme-builder { display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--border-2); border-radius: var(--radius-lg); padding: 16px; background: var(--bg-3); display: none; }
+.theme-builder.open { display: flex; }
+.theme-builder-header { display: flex; align-items: center; justify-content: space-between; }
+.theme-builder-cancel { background: none; border: none; color: var(--text-3); font-family: var(--ff-mono); font-size: 0.65rem; cursor: pointer; padding: 4px 8px; border-radius: var(--radius); transition: color 0.15s; }
+.theme-builder-cancel:hover { color: var(--red); }
+.theme-color-grid { display: flex; flex-direction: column; gap: 8px; }
+.theme-color-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.theme-color-label { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; flex: 1; }
+.theme-color-pair { display: flex; align-items: center; gap: 8px; }
+.color-wheel { width: 34px; height: 34px; border: 2px solid var(--border-2); border-radius: var(--radius); cursor: pointer; padding: 2px; background: none; flex-shrink: 0; }
+.color-wheel::-webkit-color-swatch-wrapper { padding: 0; border-radius: 4px; }
+.color-wheel::-webkit-color-swatch { border: none; border-radius: 4px; }
+.color-hex { width: 78px; background: var(--bg-4); border: 1px solid var(--border-2); border-radius: var(--radius); padding: 6px 8px; color: var(--text-1); font-family: var(--ff-mono); font-size: 0.68rem; outline: none; }
+.color-hex:focus { border-color: var(--accent); }
+.theme-preview { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-2); }
+.tp-card { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+.tp-tag { font-family: var(--ff-mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; display: inline-block; width: fit-content; }
+.tp-title { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; line-height: 1.2; }
+.tp-author { font-size: 0.78rem; font-style: italic; }
+.tp-excerpt { font-size: 0.8rem; line-height: 1.5; }
+.tp-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top-width: 1px; border-top-style: solid; }
+.tp-stat { font-family: var(--ff-mono); font-size: 0.58rem; }
+.tp-pill { font-family: var(--ff-mono); font-size: 0.58rem; padding: 2px 6px; border-radius: 3px; }
+.custom-themes-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px; }
+.custom-theme-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: var(--radius); border: 1px solid var(--border-2); background: var(--bg-3); }
+.custom-theme-dot { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; }
+.custom-theme-name { flex: 1; font-family: var(--ff-body); font-size: 0.9rem; color: var(--text-1); }
+.custom-theme-actions { display: flex; gap: 4px; }
+.custom-theme-btn { background: none; border: 1px solid var(--border-2); border-radius: var(--radius); padding: 3px 8px; font-family: var(--ff-mono); font-size: 0.6rem; cursor: pointer; color: var(--text-3); transition: all 0.15s; }
+.custom-theme-btn:hover { color: var(--text-1); border-color: var(--text-3); }
+.custom-theme-btn.apply { color: var(--accent); border-color: var(--accent); }
+.custom-theme-btn.apply:hover { background: var(--accent-dim); }
+.custom-theme-btn.del:hover { color: var(--red); border-color: var(--red); }
+.no-custom-themes { font-size: 0.82rem; color: var(--text-4); font-style: italic; padding: 6px 0; }
+/* ── FONT SELECTOR ── */
+.font-list { display: flex; flex-direction: column; gap: 8px; }
+.font-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid var(--border-2); border-radius: var(--radius); background: var(--bg-3); cursor: pointer; transition: all 0.15s; text-align: left; width: 100%; }
+.font-option:hover { border-color: var(--text-3); }
+.font-option.active { border-color: var(--accent); background: var(--accent-glow); }
+.font-option-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.font-option-sample { font-size: 1.15rem; color: var(--text-1); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.font-option-name { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; }
+.font-option-name .font-tag { color: var(--accent); margin-left: 6px; }
+.font-option-check { color: var(--accent); font-size: 0.9rem; opacity: 0; transition: opacity 0.15s; flex-shrink: 0; }
+.font-option.active .font-option-check { opacity: 1; }
+.font-del { background: none; border: none; color: var(--text-4); cursor: pointer; font-size: 0.8rem; padding: 2px 6px; border-radius: var(--radius); flex-shrink: 0; }
+.font-del:hover { color: var(--red); }
+.custom-font-builder { display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--border-2); border-radius: var(--radius-lg); padding: 14px; background: var(--bg-3); }
+.custom-font-or { text-align: center; font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-4); letter-spacing: 0.1em; }
+.custom-font-filename { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--accent-2); margin-top: 6px; }
+/* ── INSTALL CARD ── */
+.install-card { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid var(--accent); border-radius: var(--radius-lg); background: var(--accent-glow); }
+.install-icon { font-size: 1.8rem; flex-shrink: 0; }
+.install-text { flex: 1; min-width: 0; }
+.install-title { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; color: var(--text-1); }
+.install-sub { font-size: 0.82rem; color: var(--text-2); margin-top: 2px; line-height: 1.4; }
+.install-btn { flex-shrink: 0; padding: 8px 18px; }
+.install-btn:disabled { opacity: 0.5; cursor: default; }
+.install-help { margin-top: 10px; padding: 12px 14px; border: 1px dashed var(--border-2); border-radius: var(--radius); font-size: 0.82rem; color: var(--text-2); line-height: 1.6; }
+.install-help b { color: var(--accent-2); }
+.highlight { background: color-mix(in srgb, var(--accent) 25%, transparent); border-radius: 2px; padding: 0 1px; }
+
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon"><svg viewBox="0 0 200 200" width="26" height="26" style="vertical-align:middle"><defs><radialGradient id="lbg" cx="50%" cy="42%" r="72%"><stop offset="0%" stop-color="#26406f"/><stop offset="100%" stop-color="#0f1a34"/></radialGradient><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ecd488"/><stop offset="100%" stop-color="#c9a84a"/></linearGradient></defs><circle cx="100" cy="100" r="96" fill="url(#lbg)"/><circle cx="100" cy="100" r="90" fill="none" stroke="#c9a84a" stroke-width="3"/><g transform="translate(100 100) scale(0.72) translate(-100 -100)"><path d="M 51.4,21.9 C 51.5,21.9 50.8,17.8 53.6,20.0 C 56.5,22.2 65.2,31.7 68.6,34.9 C 71.9,38.2 72.5,35.5 73.8,39.4 C 75.1,43.3 75.5,56.0 76.3,58.2 C 77.2,60.4 78.3,54.8 79.1,52.7 C 79.9,50.5 79.1,44.9 81.0,45.5 C 83.0,46.0 87.9,52.4 91.0,56.0 C 94.1,59.5 99.0,61.3 99.9,66.8 C 100.7,72.2 97.0,82.2 96.3,88.7 C 95.6,95.1 95.7,102.7 95.7,105.5 C 95.8,108.4 95.9,108.0 96.5,105.5 C 97.2,103.0 98.1,95.9 99.6,90.6 C 101.1,85.3 103.2,75.1 105.4,73.7 C 107.6,72.3 109.8,78.5 112.6,82.3 C 115.4,86.1 120.3,93.6 122.3,96.7 C 124.3,99.8 124.3,98.9 124.8,100.8 C 125.3,102.8 125.5,105.5 125.3,108.3 C 125.1,111.1 124.8,113.5 123.7,117.4 C 122.6,121.4 119.2,129.9 118.7,132.1 C 118.2,134.3 119.5,132.1 120.6,130.7 C 121.8,129.4 124.3,126.2 125.6,124.1 C 126.9,122.0 127.5,120.8 128.4,118.3 C 129.2,115.8 129.6,109.1 130.6,109.1 C 131.6,109.1 133.7,115.6 134.5,118.3 C 135.2,120.9 135.2,122.7 135.0,124.9 C 134.8,127.1 134.4,129.0 133.4,131.6 C 132.3,134.1 130.0,138.1 128.9,140.4 C 127.9,142.8 127.4,143.6 127.0,145.7 C 126.6,147.7 129.3,154.9 126.4,152.6 C 123.6,150.3 115.5,139.9 109.8,132.1 C 104.2,124.3 96.7,112.7 92.4,105.8 C 88.1,98.9 86.9,96.3 83.8,90.6 C 80.8,84.9 78.0,79.8 74.1,71.5 C 70.2,63.1 62.9,45.7 60.6,40.5 C 58.2,35.3 60.0,40.2 60.0,40.5 C 60.0,40.8 59.5,39.7 60.3,42.1 C 61.1,44.6 62.6,49.9 64.7,55.2 C 66.8,60.4 69.5,66.9 72.7,73.7 C 76.0,80.5 80.1,88.5 84.4,96.1 C 88.7,103.7 94.0,112.4 98.5,119.4 C 103.0,126.3 107.2,132.2 111.5,137.9 C 115.8,143.7 120.4,149.3 124.5,154.0 C 128.6,158.7 131.4,161.8 135.8,166.2 C 140.3,170.5 149.0,177.7 151.1,180.0 C 153.1,182.3 149.3,180.2 148.0,180.0 C 146.7,179.8 145.7,180.6 143.3,178.9 C 140.9,177.1 136.8,172.8 133.6,169.5 C 130.5,166.2 126.7,161.5 124.5,159.2 C 122.3,156.9 121.9,156.5 120.3,155.6 C 118.8,154.8 118.0,154.5 115.4,154.3 C 112.7,154.0 107.9,154.5 104.6,154.3 C 101.2,154.0 98.0,153.7 95.2,152.9 C 92.3,152.0 89.9,150.9 87.4,149.3 C 85.0,147.6 81.6,144.1 80.5,142.9 C 79.3,141.8 79.2,142.2 80.5,142.4 C 81.7,142.5 85.5,143.5 88.0,143.7 C 90.4,144.0 93.1,143.8 95.4,143.7 C 97.8,143.6 100.9,143.4 102.1,143.2 C 103.3,143.0 105.1,143.2 102.6,142.6 C 100.2,142.0 91.8,140.9 87.4,139.6 C 83.0,138.3 79.3,138.0 76.1,134.9 C 72.8,131.8 70.5,126.3 67.8,121.0 C 65.0,115.8 61.2,107.4 59.4,103.3 C 57.7,99.2 56.8,97.0 57.2,96.4 C 57.6,95.8 60.1,98.5 61.9,99.4 C 63.7,100.4 65.3,101.2 68.0,102.2 C 70.8,103.2 76.3,104.9 78.5,105.5 C 80.8,106.1 83.5,107.8 81.3,105.8 C 79.1,103.9 69.9,97.6 65.3,93.9 C 60.6,90.3 55.7,85.9 53.6,83.9 C 51.6,82.0 53.7,84.9 53.1,82.3 C 52.5,79.7 50.7,72.6 50.0,68.4 C 49.4,64.2 48.5,58.2 49.2,57.1 C 49.9,56.0 52.8,60.8 54.5,62.1 C 56.2,63.4 58.3,64.3 59.4,64.8 C 60.6,65.4 62.4,66.7 61.4,65.1 C 60.4,63.6 55.2,57.8 53.4,55.4 C 51.5,53.0 51.0,52.1 50.3,50.7 C 49.6,49.3 49.0,49.9 48.9,47.1 C 48.8,44.3 49.0,38.4 49.8,33.8 C 50.5,29.3 53.1,22.0 53.4,20.0 C 53.6,18.0 51.4,21.9 51.4,21.9 Z" fill="url(#lg)"/></g></svg></span>
+        <span class="logo-text">Inscribe</span>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Library</div>
+      <button class="nav-item active" data-filter-preset="all"><span class="nav-icon">◈</span> All Scripts <span class="nav-count" id="countAll">0</span></button>
+      <button class="nav-item" data-filter-preset="recent"><span class="nav-icon">◷</span> Recently Added</button>
+      <button class="nav-item" data-filter-preset="favorites"><span class="nav-icon">◆</span> Favorites</button>
+      <div class="nav-section-label">Genres</div>
+      <div id="genreNav" class="nav-tag-list"></div>
+      <div class="nav-section-label">Languages</div>
+      <div id="languageNav" class="nav-tag-list"></div>
+      <div class="nav-section-label">Tags</div>
+      <div id="tagNav" class="nav-tag-list"></div>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="add-script-btn" id="addScriptBtn"><span>+</span> New Script</button>
+      <div class="sidebar-bottom-row">
+        <button class="sidebar-action-btn" id="profileBtn">👤 Profile</button>
+        <button class="sidebar-action-btn" id="settingsBtn">⚙ Settings</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search scripts, authors, tags…" autocomplete="off" />
+        <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="viewToggle" title="Toggle view" aria-label="Toggle view">⊞</button>
+        <button class="icon-btn" id="profileBtnTop" title="Profile" style="font-size:1rem">👤</button>
+        <button class="icon-btn" id="settingsBtnTop" title="Settings" style="font-size:1rem">⚙</button>
+        <button class="icon-btn add-btn-top" id="addScriptBtnTop" title="Add script">+</button>
+      </div>
+    </header>
+    <div class="filter-bar">
+      <div class="filter-chips" id="filterChips">
+        <span class="filter-label">Sort:</span>
+        <button class="chip active" data-sort="date-desc">Newest</button>
+        <button class="chip" data-sort="date-asc">Oldest</button>
+        <button class="chip" data-sort="alpha-asc">A–Z</button>
+        <button class="chip" data-sort="alpha-desc">Z–A</button>
+        <button class="chip" data-sort="size-desc">Longest</button>
+        <button class="chip" data-sort="size-asc">Shortest</button>
+        <button class="chip" data-sort="author-asc">Author</button>
+      </div>
+      <div class="active-filters" id="activeFilters"></div>
+      <div class="results-count" id="resultsCount"></div>
+    </div>
+    <div class="scripts-container" id="scriptsContainer">
+      <div class="scripts-grid" id="scriptsGrid"></div>
+      <div class="empty-state" id="emptyState" style="display:none">
+        <div class="empty-icon">🎙</div>
+        <div class="empty-title">No scripts found</div>
+        <div class="empty-sub">Try adjusting your filters or add a new script.</div>
+        <button class="add-script-btn-empty" id="addScriptBtnEmpty">+ Add Your First Script</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- SCRIPT EDIT MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="scriptModal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">New Script</h2>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Title *</label><input type="text" class="form-input" id="fieldTitle" placeholder="Script title" /></div>
+        <div class="form-group form-group--sm"><label class="form-label">Language</label><input type="text" class="form-input" id="fieldLanguage" placeholder="e.g. English, Français" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Author</label><input type="text" class="form-input" id="fieldAuthor" placeholder="Author name" /></div>
+        <div class="form-group form-group--sm"><label class="form-label">Genre</label><input type="text" class="form-input" id="fieldGenre" placeholder="e.g. Drama, Comedy" list="genreDatalist" /><datalist id="genreDatalist"></datalist></div>
+      </div>
+      <div class="form-group"><label class="form-label">Tags <span class="form-hint">(comma separated)</span></label><input type="text" class="form-input" id="fieldTags" placeholder="emotional, monologue, villain…" /></div>
+      <div class="form-group"><label class="form-label">Character Name</label><input type="text" class="form-input" id="fieldCharacter" placeholder="Character being voiced" /></div>
+      <div class="form-group"><label class="form-label">Script Content *</label><textarea class="form-textarea" id="fieldContent" placeholder="Paste or type the full script here…" rows="10"></textarea><div class="char-count" id="charCount">0 words · 0 characters</div></div>
+      <div class="form-group"><label class="form-label">Notes</label><textarea class="form-textarea form-textarea--sm" id="fieldNotes" placeholder="Directing notes, tone, pacing, pronunciation hints…" rows="3"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="modalCancel">Cancel</button>
+      <button class="btn btn-ghost btn-delete" id="modalDelete" style="display:none">Delete</button>
+      <button class="btn btn-primary" id="modalSave">Save Script</button>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW SCRIPT MODAL -->
+<div class="modal-overlay" id="viewOverlay">
+  <div class="modal modal--view" id="viewModal" role="dialog" aria-modal="true">
+    <div class="view-fab" id="viewFab">
+      <button class="view-fab-btn" id="viewFavorite" title="Favorite" aria-label="Toggle favorite">◆</button>
+      <button class="view-fab-btn" id="viewEdit" title="Edit" aria-label="Edit script">✎</button>
+      <button class="view-fab-btn view-fab-close" id="viewClose" aria-label="Close">✕</button>
+    </div>
+    <div class="view-body" id="viewBody">
+      <div class="view-header-scrollable">
+        <div class="view-meta-top">
+          <span class="view-genre" id="viewGenre"></span>
+          <span class="view-language" id="viewLanguage"></span>
+        </div>
+        <h1 class="view-title" id="viewTitle"></h1>
+        <div class="view-byline"><span id="viewAuthor"></span><span id="viewCharacter" class="view-character"></span></div>
+        <div class="view-tags" id="viewTags"></div>
+        <div class="view-stats-row"><span class="view-stats" id="viewStats"></span><span class="view-date" id="viewDate"></span></div>
+        <div class="view-notes" id="viewNotesWrap" style="display:none">
+          <div class="view-notes-label">🎬 Director's Notes</div>
+          <div class="view-notes-text" id="viewNotes"></div>
+        </div>
+        <div class="view-scroll-hint" id="viewScrollHint"><span>scroll to read</span><span class="scroll-arrow">↓</span></div>
+      </div>
+      <div class="view-content" id="viewContent"></div>
+      <!-- Reactions -->
+      <div class="view-reactions" id="viewReactions">
+        <button class="reaction-btn" id="reactionLike">👍 <span class="reaction-count" id="likeCount">0</span></button>
+        <button class="reaction-btn" id="reactionDislike">👎 <span class="reaction-count" id="dislikeCount">0</span></button>
+        <button class="reaction-btn" id="reactionFire">🔥 <span class="reaction-count" id="fireCount">0</span></button>
+        <button class="reaction-btn" id="reactionHeart">❤️ <span class="reaction-count" id="heartCount">0</span></button>
+        <button class="reaction-btn" id="reactionMic">🎙 <span class="reaction-count" id="micCount">0</span></button>
+      </div>
+      <!-- Comments -->
+      <div class="view-comments">
+        <div class="comments-header" id="commentsHeader">Comments</div>
+        <div class="comment-composer">
+          <div class="comment-avatar" id="composerAvatar">🎙</div>
+          <div class="comment-input-wrap">
+            <textarea class="comment-input" id="commentInput" placeholder="Share your thoughts on this script…" rows="2"></textarea>
+            <button class="comment-submit" id="commentSubmit">Post</button>
+          </div>
+        </div>
+        <div class="comment-list" id="commentList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settingsOverlay">
+  <div class="modal modal--settings" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h2 class="modal-title">Settings</h2>
+      <button class="modal-close" id="settingsClose" aria-label="Close">✕</button>
+    </div>
+    <div class="settings-tabs">
+      <button class="settings-tab active" data-settings-tab="appearance">Appearance</button>
+      <button class="settings-tab" data-settings-tab="reading">Reading</button>
+      <button class="settings-tab" data-settings-tab="themes">Themes</button>
+      <button class="settings-tab" data-settings-tab="data">Data</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- APPEARANCE -->
+      <div class="settings-panel active" data-settings-panel="appearance">
+        <div>
+          <div class="settings-section-title">Theme</div>
+          <div class="theme-grid" id="themeGrid"></div>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Compact cards</div><div class="settings-sub">Reduce card padding in grid view</div></div>
+          <label class="toggle-switch"><input type="checkbox" id="settingCompact"><span class="toggle-track"></span></label>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Animations</div><div class="settings-sub">Card entrance and transition effects</div></div>
+          <label class="toggle-switch"><input type="checkbox" id="settingAnimations" checked><span class="toggle-track"></span></label>
+        </div>
+      </div>
+
+      <!-- READING -->
+      <div class="settings-panel" data-settings-panel="reading">
+        <div>
+          <div class="settings-section-title">Reading Font</div>
+          <div class="font-list" id="fontList"></div>
+        </div>
+        <div>
+          <div class="settings-section-title">Add Your Own Font</div>
+          <div class="custom-font-builder">
+            <div class="form-group">
+              <label class="form-label">Font Name <span class="form-hint">(must match the font's family name)</span></label>
+              <input type="text" class="form-input" id="customFontName" placeholder="e.g. Comic Sans MS, My Font" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Font File <span class="form-hint">(.ttf, .otf, .woff, .woff2)</span></label>
+              <button class="export-btn" id="customFontFileBtn" style="justify-content:center">📁 Choose font file…</button>
+              <input type="file" id="customFontFile" accept=".ttf,.otf,.woff,.woff2" style="display:none">
+              <div class="custom-font-filename" id="customFontFilename"></div>
+            </div>
+            <div class="custom-font-or">— or —</div>
+            <div class="form-group">
+              <label class="form-label">Web Font URL <span class="form-hint">(Google Fonts CSS or direct font URL)</span></label>
+              <input type="text" class="form-input" id="customFontUrl" placeholder="https://fonts.googleapis.com/css2?family=…" />
+            </div>
+            <button class="btn btn-primary" id="addCustomFont" style="width:100%">Add Font</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Font size</div><div class="settings-sub">Script reading view text size</div></div>
+          <div class="font-size-control">
+            <button id="fontSizeDown">−</button>
+            <span class="font-size-val" id="fontSizeVal">18px</span>
+            <button id="fontSizeUp">+</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Line spacing</div><div class="settings-sub">Reading view line height</div></div>
+          <div class="font-size-control">
+            <button id="lineHeightDown">−</button>
+            <span class="font-size-val" id="lineHeightVal">2.0</span>
+            <button id="lineHeightUp">+</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Show word count on cards</div></div>
+          <label class="toggle-switch"><input type="checkbox" id="settingWordCount" checked><span class="toggle-track"></span></label>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Show excerpt on cards</div></div>
+          <label class="toggle-switch"><input type="checkbox" id="settingExcerpt" checked><span class="toggle-track"></span></label>
+        </div>
+      </div>
+
+      <!-- THEMES -->
+      <div class="settings-panel" data-settings-panel="themes">
+        <div>
+          <div class="settings-section-title">Custom Themes</div>
+          <div class="custom-themes-list" id="customThemesList"></div>
+        </div>
+        <div class="theme-builder" id="themeBuilder">
+          <div class="theme-builder-header">
+            <span class="settings-section-title" id="themeBuilderLabel">New Theme</span>
+            <button class="theme-builder-cancel" id="themeBuilderCancel">Cancel</button>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Theme Name</label>
+            <input type="text" class="form-input" id="customThemeName" placeholder="e.g. Ocean Dusk" />
+          </div>
+          <div class="theme-color-grid">
+            <div class="theme-color-row">
+              <label class="theme-color-label">Background</label>
+              <div class="theme-color-pair">
+                <input type="color" class="color-wheel" id="tcBg" value="#141210" />
+                <input type="text" class="color-hex" id="tcBgHex" value="#141210" maxlength="7" />
+              </div>
+            </div>
+            <div class="theme-color-row">
+              <label class="theme-color-label">Surface</label>
+              <div class="theme-color-pair">
+                <input type="color" class="color-wheel" id="tcSurface" value="#1c1916" />
+                <input type="text" class="color-hex" id="tcSurfaceHex" value="#1c1916" maxlength="7" />
+              </div>
+            </div>
+            <div class="theme-color-row">
+              <label class="theme-color-label">Accent</label>
+              <div class="theme-color-pair">
+                <input type="color" class="color-wheel" id="tcAccent" value="#c9973a" />
+                <input type="text" class="color-hex" id="tcAccentHex" value="#c9973a" maxlength="7" />
+              </div>
+            </div>
+            <div class="theme-color-row">
+              <label class="theme-color-label">Primary Text</label>
+              <div class="theme-color-pair">
+                <input type="color" class="color-wheel" id="tcText" value="#f0e8d8" />
+                <input type="text" class="color-hex" id="tcTextHex" value="#f0e8d8" maxlength="7" />
+              </div>
+            </div>
+            <div class="theme-color-row">
+              <label class="theme-color-label">Muted Text</label>
+              <div class="theme-color-pair">
+                <input type="color" class="color-wheel" id="tcMuted" value="#7a6d58" />
+                <input type="text" class="color-hex" id="tcMutedHex" value="#7a6d58" maxlength="7" />
+              </div>
+            </div>
+            <div class="theme-color-row">
+              <label class="theme-color-label">Border</label>
+              <div class="theme-color-pair">
+                <input type="color" class="color-wheel" id="tcBorder" value="#2e2820" />
+                <input type="text" class="color-hex" id="tcBorderHex" value="#2e2820" maxlength="7" />
+              </div>
+            </div>
+          </div>
+          <div class="theme-preview" id="themePreview">
+            <div class="tp-card">
+              <div class="tp-tag">DRAMA</div>
+              <div class="tp-title">Preview Script</div>
+              <div class="tp-author">by Sample Author</div>
+              <div class="tp-excerpt">This is how your script cards will look with this theme applied…</div>
+              <div class="tp-footer"><span class="tp-stat">240 words</span><span class="tp-pill">English</span></div>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="saveCustomTheme" style="width:100%">Save Theme</button>
+        </div>
+        <button class="export-btn" id="newCustomThemeBtn" style="width:100%;justify-content:center">+ Create New Theme</button>
+      </div>
+
+      <!-- DATA -->
+      <div class="settings-panel" data-settings-panel="data">
+        <div id="installSection">
+          <div class="settings-section-title">Install App</div>
+          <div class="install-card">
+            <div class="install-icon">📲</div>
+            <div class="install-text">
+              <div class="install-title" id="installTitle">Install Inscribe</div>
+              <div class="install-sub" id="installSub">Add to your home screen for full-screen, offline access.</div>
+            </div>
+            <button class="btn btn-primary install-btn" id="installBtn">Install</button>
+          </div>
+          <div class="install-help" id="installHelp" style="display:none"></div>
+        </div>
+        <div>
+          <div class="settings-section-title">Export</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="export-btn" id="exportJSON">📦 Export as JSON</button>
+            <button class="export-btn" id="exportText">📄 Export as Text</button>
+          </div>
+        </div>
+        <div>
+          <div class="settings-section-title">Import</div>
+          <button class="export-btn" id="importBtn">📥 Import JSON backup</button>
+          <input type="file" id="importFile" accept=".json" style="display:none">
+        </div>
+        <div class="danger-zone">
+          <div class="danger-zone-title">⚠ Danger Zone</div>
+          <div class="settings-row">
+            <div><div class="settings-label">Clear all scripts</div><div class="settings-sub">Permanently delete every script</div></div>
+            <button class="btn btn-danger" id="clearScripts" style="padding:6px 12px;font-size:0.78rem">Delete All</button>
+          </div>
+          <div class="settings-row">
+            <div><div class="settings-label">Reset everything</div><div class="settings-sub">Wipe all data, settings & profile</div></div>
+            <button class="btn btn-danger" id="resetAll" style="padding:6px 12px;font-size:0.78rem">Reset App</button>
+          </div>
+        </div>
+        <div style="font-family:var(--ff-mono);font-size:0.6rem;color:var(--text-4)">
+          Storage used: <span id="storageUsed">—</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE MODAL -->
+<div class="modal-overlay" id="profileOverlay">
+  <div class="modal modal--profile" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h2 class="modal-title">My Profile</h2>
+      <button class="modal-close" id="profileClose" aria-label="Close">✕</button>
+    </div>
+    <div class="profile-hero">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar" id="profileAvatarDisplay" title="Click to change">🎙</div>
+        <div class="profile-avatar-hint">tap to change</div>
+      </div>
+      <div class="profile-name-block">
+        <div class="profile-display-name" id="profileNameDisplay">Voice Actor</div>
+        <div class="profile-handle" id="profileHandleDisplay">@username</div>
+      </div>
+    </div>
+    <div class="profile-stats-row">
+      <div class="profile-stat"><div class="profile-stat-val" id="statScripts">0</div><div class="profile-stat-label">Scripts</div></div>
+      <div class="profile-stat"><div class="profile-stat-val" id="statFavorites">0</div><div class="profile-stat-label">Favourites</div></div>
+      <div class="profile-stat"><div class="profile-stat-val" id="statComments">0</div><div class="profile-stat-label">Comments</div></div>
+      <div class="profile-stat"><div class="profile-stat-val" id="statReactions">0</div><div class="profile-stat-label">Reactions</div></div>
+    </div>
+    <div class="modal-body" style="gap:18px">
+      <div class="form-group"><label class="form-label">Display Name</label><input type="text" class="form-input" id="profileName" placeholder="Your name" /></div>
+      <div class="form-group"><label class="form-label">Username</label><input type="text" class="form-input" id="profileHandle" placeholder="@handle" /></div>
+      <div class="form-group"><label class="form-label">Bio</label><textarea class="form-textarea" id="profileBio" placeholder="Tell us about yourself…" rows="2"></textarea></div>
+      <div class="form-group"><label class="form-label">Avatar Emoji</label><div class="emoji-picker" id="emojiPicker"></div></div>
+      <div class="form-group"><label class="form-label">Accent Colour Override</label><div class="color-picker-row" id="colorPicker"></div></div>
+      <div class="form-group">
+        <label class="form-label">Badges</label>
+        <div class="badge-grid" id="badgeGrid"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="profileCancel">Cancel</button>
+      <button class="btn btn-primary" id="profileSave">Save Profile</button>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ── STORAGE KEYS ─────────────────────────────────────────────
+const KEYS = {
+  scripts:  'vs_scripts',
+  settings: 'vs_settings',
+  profile:  'vs_profile',
+  comments: 'vs_comments',
+  reactions:'vs_reactions',
+};
+
+function load(key, def) { try { return JSON.parse(localStorage.getItem(key)) ?? def; } catch { return def; } }
+function save(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+
+// ── STATE ─────────────────────────────────────────────────────
+let scripts   = load(KEYS.scripts, []);
+let settings  = load(KEYS.settings, { theme:'dark-studio', compact:false, animations:true, fontSize:18, lineHeight:2.0, wordCount:true, excerpt:true, readingFont:"'Crimson Pro', Georgia, serif" });
+let profile   = load(KEYS.profile,  { name:'Voice Actor', handle:'@username', bio:'', avatar:'🎙', color:null });
+let comments  = load(KEYS.comments, {});   // { scriptId: [{id,author,avatar,text,ts,likes,liked}] }
+let reactions = load(KEYS.reactions, {});  // { scriptId: { like,dislike,fire,heart,mic, myLike,myDislike,myFire,myHeart,myMic } }
+
+let filteredScripts = [], activeSort = 'date-desc', activeGenreFilter = null,
+    activeLanguageFilter = null, activeTagFilter = null, activePreset = 'all',
+    searchQuery = '', isListView = false, editingId = null, viewingId = null;
+
+// ── APPLY SETTINGS ON LOAD ─────────────────────────────────────
+let customFonts = load('vs_custom_fonts', []); // [{id,name,family,css}]
+
+function injectCustomFontStyles() {
+  let el = document.getElementById('customFontStyles');
+  if (!el) { el = document.createElement('style'); el.id='customFontStyles'; document.head.appendChild(el); }
+  el.textContent = customFonts.map(f => f.css || '').join('\n');
+  // Load any web-font stylesheet links
+  customFonts.forEach(f => {
+    if (f.linkHref && !document.querySelector(`link[data-font="${f.id}"]`)) {
+      const l = document.createElement('link'); l.rel='stylesheet'; l.href=f.linkHref; l.dataset.font=f.id;
+      document.head.appendChild(l);
+    }
+  });
+}
+
+function applySettings() {
+  document.documentElement.dataset.theme = settings.theme;
+  document.documentElement.style.setProperty('--font-size-content', settings.fontSize + 'px');
+  document.documentElement.style.setProperty('--line-height-content', settings.lineHeight);
+  document.documentElement.style.setProperty('--ff-reading', settings.readingFont || "var(--ff-body)");
+  if (settings.compact) document.body.classList.add('compact');
+  else document.body.classList.remove('compact');
+}
+injectCustomFontStyles();
+applySettings();
+
+// ── HELPERS ───────────────────────────────────────────────────
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function wordCount(s) { return s.trim() ? s.trim().split(/\s+/).length : 0; }
+function formatDate(ts) { return new Date(ts).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
+function timeAgo(ts) {
+  const d = Date.now() - ts, m = 60000, h = 3600000;
+  if (d < m) return 'just now';
+  if (d < h) return Math.floor(d/m) + 'm ago';
+  if (d < 86400000) return Math.floor(d/h) + 'h ago';
+  return Math.floor(d/86400000) + 'd ago';
+}
+function parseTags(s) { return s.split(',').map(t=>t.trim().toLowerCase()).filter(Boolean); }
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function highlightText(t, q) { if(!q) return escHtml(t); const e=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); return escHtml(t).replace(new RegExp(`(${e})`,'gi'),'<mark class="highlight">$1</mark>'); }
+
+function toast(msg, dur=2200) {
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  document.getElementById('toastContainer').appendChild(el);
+  setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 350); }, dur);
+}
+
+// ── DOM REFS ─────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const sidebar=$('sidebar'), sidebarOverlay=$('sidebarOverlay'), sidebarClose=$('sidebarClose'), menuToggle=$('menuToggle');
+const searchInput=$('searchInput'), searchClear=$('searchClear'), viewToggle=$('viewToggle');
+const scriptsGrid=$('scriptsGrid'), emptyState=$('emptyState'), resultsCount=$('resultsCount'), activeFilters=$('activeFilters');
+const countAll=$('countAll'), genreNav=$('genreNav'), languageNav=$('languageNav'), tagNav=$('tagNav');
+const modalOverlay=$('modalOverlay'), modalTitle=$('modalTitle'), modalClose=$('modalClose'), modalCancel=$('modalCancel');
+const modalSave=$('modalSave'), modalDelete=$('modalDelete'), fieldTitle=$('fieldTitle'), fieldAuthor=$('fieldAuthor');
+const fieldLanguage=$('fieldLanguage'), fieldGenre=$('fieldGenre'), fieldTags=$('fieldTags');
+const fieldCharacter=$('fieldCharacter'), fieldContent=$('fieldContent'), fieldNotes=$('fieldNotes'), charCount=$('charCount');
+const viewOverlay=$('viewOverlay'), viewClose=$('viewClose'), viewEdit=$('viewEdit'), viewFavorite=$('viewFavorite');
+const viewBody=$('viewBody'), viewScrollHint=$('viewScrollHint');
+const viewTitle=$('viewTitle'), viewGenre=$('viewGenre'), viewLanguage=$('viewLanguage');
+const viewAuthor=$('viewAuthor'), viewCharacter=$('viewCharacter'), viewTags=$('viewTags');
+const viewContent=$('viewContent'), viewNotesWrap=$('viewNotesWrap'), viewNotes=$('viewNotes');
+const viewStats=$('viewStats'), viewDate=$('viewDate');
+const settingsOverlay=$('settingsOverlay'), settingsClose=$('settingsClose');
+const profileOverlay=$('profileOverlay'), profileClose=$('profileClose');
+
+// ── SIDEBAR ───────────────────────────────────────────────────
+menuToggle.addEventListener('click',()=>{ sidebar.classList.toggle('open'); sidebarOverlay.classList.toggle('open'); });
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+function closeSidebar() { sidebar.classList.remove('open'); sidebarOverlay.classList.remove('open'); }
+
+// ── SEARCH ────────────────────────────────────────────────────
+searchInput.addEventListener('input',()=>{ searchQuery=searchInput.value.trim(); searchClear.classList.toggle('visible',searchQuery.length>0); applyFiltersAndRender(); });
+searchClear.addEventListener('click',()=>{ searchInput.value=''; searchQuery=''; searchClear.classList.remove('visible'); applyFiltersAndRender(); });
+
+// ── SORT ──────────────────────────────────────────────────────
+document.querySelectorAll('.chip[data-sort]').forEach(c=>c.addEventListener('click',()=>{ document.querySelectorAll('.chip[data-sort]').forEach(x=>x.classList.remove('active')); c.classList.add('active'); activeSort=c.dataset.sort; applyFiltersAndRender(); }));
+
+// ── VIEW TOGGLE ───────────────────────────────────────────────
+viewToggle.addEventListener('click',()=>{ isListView=!isListView; scriptsGrid.classList.toggle('list-view',isListView); viewToggle.textContent=isListView?'⊟':'⊞'; });
+
+// ── NAV PRESETS ───────────────────────────────────────────────
+document.querySelectorAll('.nav-item[data-filter-preset]').forEach(btn=>btn.addEventListener('click',()=>{ document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); activePreset=btn.dataset.filterPreset; activeGenreFilter=activeLanguageFilter=activeTagFilter=null; applyFiltersAndRender(); closeSidebar(); }));
+
+// ── FILTER & SORT ─────────────────────────────────────────────
+function applyFiltersAndRender() {
+  let r = [...scripts];
+  if (activePreset==='recent') { const w=Date.now()-7*86400000; r=r.filter(s=>s.createdAt>w); }
+  else if (activePreset==='favorites') r=r.filter(s=>s.favorite);
+  if (activeGenreFilter) r=r.filter(s=>(s.genre||'').toLowerCase()===activeGenreFilter.toLowerCase());
+  if (activeLanguageFilter) r=r.filter(s=>(s.language||'').toLowerCase()===activeLanguageFilter.toLowerCase());
+  if (activeTagFilter) r=r.filter(s=>(s.tags||[]).includes(activeTagFilter.toLowerCase()));
+  if (searchQuery) { const q=searchQuery.toLowerCase(); r=r.filter(s=>[s.title,s.author,s.genre,s.character,s.language,s.content,...(s.tags||[])].some(x=>(x||'').toLowerCase().includes(q))); }
+  r.sort((a,b)=>{ switch(activeSort){ case'date-desc':return b.createdAt-a.createdAt; case'date-asc':return a.createdAt-b.createdAt; case'alpha-asc':return (a.title||'').localeCompare(b.title||''); case'alpha-desc':return (b.title||'').localeCompare(a.title||''); case'size-desc':return wordCount(b.content||'')-wordCount(a.content||''); case'size-asc':return wordCount(a.content||'')-wordCount(b.content||''); case'author-asc':return (a.author||'').localeCompare(b.author||''); } return 0; });
+  filteredScripts=r;
+  renderScripts(); renderActiveFilters(); updateResultsCount();
+}
+
+// ── RENDER SCRIPTS ────────────────────────────────────────────
+function renderScripts() {
+  scriptsGrid.innerHTML='';
+  if (!filteredScripts.length) { emptyState.style.display='flex'; return; }
+  emptyState.style.display='none';
+  filteredScripts.forEach((s,i)=>{ const c=buildCard(s); if(settings.animations) c.style.animationDelay=`${i*30}ms`; scriptsGrid.appendChild(c); });
+}
+
+function buildCard(s) {
+  const words=wordCount(s.content||''), tags=s.tags||[], excerpt=(s.content||'').slice(0,180).trim();
+  const rx=reactions[s.id]||{}, totalReactions=(rx.like||0)+(rx.fire||0)+(rx.heart||0)+(rx.mic||0);
+  const cmts=(comments[s.id]||[]).length;
+  const c=document.createElement('div');
+  c.className='script-card'+(s.favorite?' favorite':''); c.dataset.id=s.id;
+  c.innerHTML=`
+    <div class="card-top">
+      ${s.genre?`<span class="card-genre">${escHtml(s.genre)}</span>`:'<span></span>'}
+      <button class="card-fav" data-id="${s.id}" aria-label="Favourite">◆</button>
+    </div>
+    <div class="card-title">${highlightText(s.title||'Untitled',searchQuery)}</div>
+    ${s.author?`<div class="card-author">by <em>${highlightText(s.author,searchQuery)}</em></div>`:''}
+    ${settings.excerpt?`<div class="card-excerpt">${highlightText(excerpt,searchQuery)}${(s.content||'').length>180?'…':''}</div>`:''}
+    ${tags.length?`<div class="card-tags">${tags.slice(0,4).map(t=>`<span class="tag-pill">${escHtml(t)}</span>`).join('')}</div>`:''}
+    <div class="card-meta">
+      <div class="card-stats">
+        ${settings.wordCount?`<span>${words.toLocaleString()} words</span>`:''}
+        ${cmts?`<span>💬 ${cmts}</span>`:''}
+        ${totalReactions?`<span>✨ ${totalReactions}</span>`:''}
+        <span>${formatDate(s.createdAt)}</span>
+      </div>
+      ${s.language?`<span class="card-lang">${escHtml(s.language)}</span>`:''}
+    </div>`;
+  c.querySelector('.card-fav').addEventListener('click',e=>{ e.stopPropagation(); toggleFavorite(s.id); });
+  c.addEventListener('click',()=>openView(s.id));
+  return c;
+}
+
+// ── RENDER NAV ────────────────────────────────────────────────
+function renderNav() {
+  countAll.textContent=scripts.length;
+  const genres={}, langs={}, tags={};
+  scripts.forEach(s=>{ if(s.genre) genres[s.genre]=(genres[s.genre]||0)+1; if(s.language) langs[s.language]=(langs[s.language]||0)+1; (s.tags||[]).forEach(t=>{ tags[t]=(tags[t]||0)+1; }); });
+  renderNavSection(genreNav, genres, ()=>activeGenreFilter, v=>{ activeGenreFilter=v; });
+  renderNavSection(languageNav, langs, ()=>activeLanguageFilter, v=>{ activeLanguageFilter=v; });
+  renderNavSection(tagNav, tags, ()=>activeTagFilter, v=>{ activeTagFilter=v; });
+  $('genreDatalist').innerHTML=Object.keys(genres).map(g=>`<option value="${escHtml(g)}">`).join('');
+}
+
+function renderNavSection(container, map, getActive, setActive) {
+  container.innerHTML='';
+  const sorted=Object.entries(map).sort((a,b)=>b[1]-a[1]).slice(0,20);
+  if(!sorted.length) { container.innerHTML=`<div style="padding:4px 10px;font-size:0.75rem;color:var(--text-4)">None yet</div>`; return; }
+  sorted.forEach(([val,count])=>{ const btn=document.createElement('button'); btn.className='nav-tag-btn'+(getActive()===val?' active':''); btn.innerHTML=`<span>${escHtml(val)}</span><span class="nav-tag-count">${count}</span>`; btn.addEventListener('click',()=>{ setActive(getActive()===val?null:val); if(getActive()!==null){ document.querySelectorAll('.nav-item[data-filter-preset]').forEach(b=>b.classList.remove('active')); activePreset='all'; document.querySelector('.nav-item[data-filter-preset="all"]').classList.add('active'); } renderNav(); applyFiltersAndRender(); closeSidebar(); }); container.appendChild(btn); });
+}
+
+function renderActiveFilters() {
+  activeFilters.innerHTML='';
+  const add=(label,clear)=>{ const ch=document.createElement('div'); ch.className='active-filter-chip'; ch.innerHTML=`${escHtml(label)} <button aria-label="Remove">✕</button>`; ch.querySelector('button').addEventListener('click',clear); activeFilters.appendChild(ch); };
+  if(activeGenreFilter) add(`Genre: ${activeGenreFilter}`,()=>{ activeGenreFilter=null; renderNav(); applyFiltersAndRender(); });
+  if(activeLanguageFilter) add(`Lang: ${activeLanguageFilter}`,()=>{ activeLanguageFilter=null; renderNav(); applyFiltersAndRender(); });
+  if(activeTagFilter) add(`Tag: ${activeTagFilter}`,()=>{ activeTagFilter=null; renderNav(); applyFiltersAndRender(); });
+}
+
+function updateResultsCount() { resultsCount.textContent=`${filteredScripts.length} of ${scripts.length} script${scripts.length!==1?'s':''}`; }
+
+// ── EDIT MODAL ────────────────────────────────────────────────
+function openModal(id=null) {
+  editingId=id; modalDelete.style.display=id?'block':'none'; modalTitle.textContent=id?'Edit Script':'New Script';
+  if(id){ const s=scripts.find(x=>x.id===id); if(!s) return; fieldTitle.value=s.title||''; fieldAuthor.value=s.author||''; fieldLanguage.value=s.language||''; fieldGenre.value=s.genre||''; fieldTags.value=(s.tags||[]).join(', '); fieldCharacter.value=s.character||''; fieldContent.value=s.content||''; fieldNotes.value=s.notes||''; }
+  else { [fieldTitle,fieldAuthor,fieldLanguage,fieldGenre,fieldTags,fieldCharacter,fieldContent,fieldNotes].forEach(f=>f.value=''); }
+  updateCharCount(); modalOverlay.classList.add('open'); setTimeout(()=>fieldTitle.focus(),100);
+}
+function closeModal() { modalOverlay.classList.remove('open'); editingId=null; }
+function updateCharCount() { const c=fieldContent.value; charCount.textContent=`${wordCount(c).toLocaleString()} words · ${c.length.toLocaleString()} characters`; }
+fieldContent.addEventListener('input', updateCharCount);
+modalClose.addEventListener('click',closeModal); modalCancel.addEventListener('click',closeModal);
+modalOverlay.addEventListener('click',e=>{ if(e.target===modalOverlay) closeModal(); });
+modalSave.addEventListener('click',()=>{
+  const title=fieldTitle.value.trim(); if(!title){ fieldTitle.focus(); fieldTitle.style.borderColor='var(--red)'; return; } fieldTitle.style.borderColor='';
+  const tags=parseTags(fieldTags.value), now=Date.now();
+  if(editingId){ const idx=scripts.findIndex(x=>x.id===editingId); if(idx!==-1){ scripts[idx]={...scripts[idx],title,author:fieldAuthor.value.trim(),language:fieldLanguage.value.trim(),genre:fieldGenre.value.trim(),tags,character:fieldCharacter.value.trim(),content:fieldContent.value.trim(),notes:fieldNotes.value.trim(),updatedAt:now}; }}
+  else scripts.unshift({id:uid(),title,author:fieldAuthor.value.trim(),language:fieldLanguage.value.trim(),genre:fieldGenre.value.trim(),tags,character:fieldCharacter.value.trim(),content:fieldContent.value.trim(),notes:fieldNotes.value.trim(),favorite:false,createdAt:now,updatedAt:now});
+  save(KEYS.scripts,scripts); renderNav(); applyFiltersAndRender(); closeModal(); toast(editingId?'Script updated ✓':'Script saved ✓');
+});
+modalDelete.addEventListener('click',()=>{ if(!editingId) return; scripts=scripts.filter(x=>x.id!==editingId); save(KEYS.scripts,scripts); renderNav(); applyFiltersAndRender(); closeModal(); toast('Script deleted'); });
+
+// ── VIEW MODAL ────────────────────────────────────────────────
+function openView(id) {
+  const s=scripts.find(x=>x.id===id); if(!s) return; viewingId=id;
+  viewTitle.textContent=s.title||'Untitled';
+  viewGenre.textContent=s.genre||''; viewGenre.style.display=s.genre?'':'none';
+  viewLanguage.textContent=s.language||''; viewLanguage.style.display=s.language?'':'none';
+  viewAuthor.textContent=s.author?`by ${s.author}`:'';
+  viewCharacter.textContent=s.character||''; viewCharacter.style.display=s.character?'':'none';
+  viewTags.innerHTML=(s.tags||[]).map(t=>`<span class="tag-pill">${escHtml(t)}</span>`).join('');
+  viewContent.textContent=s.content||'';
+  if(s.notes){ viewNotes.textContent=s.notes; viewNotesWrap.style.display='block'; } else viewNotesWrap.style.display='none';
+  const words=wordCount(s.content||'');
+  viewStats.textContent=`${words.toLocaleString()} words · ${(s.content||'').length.toLocaleString()} chars`;
+  viewDate.textContent=`Added ${formatDate(s.createdAt)}`;
+  viewFavorite.style.color=s.favorite?'var(--accent)':'';
+  viewBody.scrollTop=0; viewScrollHint.classList.remove('hidden');
+  renderReactions(id); renderComments(id);
+  viewOverlay.classList.add('open');
+}
+function closeView() { viewOverlay.classList.remove('open'); viewingId=null; }
+viewClose.addEventListener('click',closeView);
+viewOverlay.addEventListener('click',e=>{ if(e.target===viewOverlay) closeView(); });
+viewBody.addEventListener('scroll',()=>{ viewScrollHint.classList.toggle('hidden',viewBody.scrollTop>30); },{passive:true});
+viewEdit.addEventListener('click',()=>{ closeView(); setTimeout(()=>openModal(viewingId),50); });
+viewFavorite.addEventListener('click',()=>{ if(!viewingId) return; toggleFavorite(viewingId); const s=scripts.find(x=>x.id===viewingId); if(s) viewFavorite.style.color=s.favorite?'var(--accent)':''; });
+
+function toggleFavorite(id) { const s=scripts.find(x=>x.id===id); if(!s) return; s.favorite=!s.favorite; s.updatedAt=Date.now(); save(KEYS.scripts,scripts); renderNav(); applyFiltersAndRender(); toast(s.favorite?'Added to favourites ◆':'Removed from favourites'); }
+
+// ── REACTIONS ─────────────────────────────────────────────────
+function getReactions(id) { return reactions[id] || (reactions[id]={like:0,dislike:0,fire:0,heart:0,mic:0,myLike:false,myDislike:false,myFire:false,myHeart:false,myMic:false}); }
+
+function renderReactions(id) {
+  const rx=getReactions(id);
+  const pairs=[['Like','like','reactionLike','likeCount'],['Dislike','dislike','reactionDislike','dislikeCount'],['Fire','fire','reactionFire','fireCount'],['Heart','heart','reactionHeart','heartCount'],['Mic','mic','reactionMic','micCount']];
+  pairs.forEach(([,key,btnId,cntId])=>{
+    const btn=$(btnId), cnt=$(cntId);
+    cnt.textContent=rx[key]||0;
+    const myKey='my'+key.charAt(0).toUpperCase()+key.slice(1);
+    btn.className='reaction-btn'+(rx[myKey]?(key==='dislike'?' active-dislike':' active'):'');
+    btn.onclick=()=>{ toggleReaction(id,key); };
+  });
+}
+
+function toggleReaction(id,key) {
+  const rx=getReactions(id);
+  const myKey='my'+key.charAt(0).toUpperCase()+key.slice(1);
+  // like/dislike are mutually exclusive
+  if(key==='like'&&rx.myDislike){ rx.myDislike=false; rx.dislike=Math.max(0,rx.dislike-1); }
+  if(key==='dislike'&&rx.myLike){ rx.myLike=false; rx.like=Math.max(0,rx.like-1); }
+  rx[myKey]=!rx[myKey];
+  rx[key]=Math.max(0,(rx[key]||0)+(rx[myKey]?1:-1));
+  save(KEYS.reactions,reactions);
+  renderReactions(id); applyFiltersAndRender();
+}
+
+// ── COMMENTS ─────────────────────────────────────────────────
+function renderComments(id) {
+  const list=comments[id]||[], cmts=$('commentList'), header=$('commentsHeader');
+  header.textContent=`Comments (${list.length})`;
+  cmts.innerHTML='';
+  const composerAv=$('composerAvatar');
+  composerAv.textContent=profile.avatar;
+  if(!list.length){ cmts.innerHTML='<div class="no-comments">No comments yet. Be the first!</div>'; return; }
+  list.slice().reverse().forEach(c=>{
+    const el=document.createElement('div'); el.className='comment';
+    el.innerHTML=`
+      <div class="comment-avatar">${escHtml(c.avatar)}</div>
+      <div class="comment-body">
+        <div class="comment-meta"><span class="comment-author-name">${escHtml(c.author)}</span><span class="comment-time">${timeAgo(c.ts)}</span></div>
+        <div class="comment-text">${escHtml(c.text)}</div>
+        <div class="comment-actions">
+          <button class="comment-action${c.liked?' liked':''}" data-cid="${c.id}">👍 ${c.likes||0}</button>
+          <button class="comment-action" style="color:var(--text-4);cursor:default">· Reply</button>
+        </div>
+      </div>`;
+    el.querySelector('[data-cid]').addEventListener('click',()=>likeComment(id,c.id));
+    cmts.appendChild(el);
+  });
+}
+
+$('commentSubmit').addEventListener('click',()=>{
+  const txt=$('commentInput').value.trim(); if(!txt||!viewingId) return;
+  if(!comments[viewingId]) comments[viewingId]=[];
+  comments[viewingId].push({ id:uid(), author:profile.name||'Anonymous', avatar:profile.avatar||'🎙', text:txt, ts:Date.now(), likes:0, liked:false });
+  save(KEYS.comments,comments); $('commentInput').value='';
+  renderComments(viewingId); applyFiltersAndRender(); toast('Comment posted');
+});
+
+function likeComment(scriptId,commentId) {
+  const list=comments[scriptId]||[], c=list.find(x=>x.id===commentId); if(!c) return;
+  c.liked=!c.liked; c.likes=Math.max(0,(c.likes||0)+(c.liked?1:-1));
+  save(KEYS.comments,comments); renderComments(scriptId);
+}
+
+// ── ADD BUTTONS ───────────────────────────────────────────────
+$('addScriptBtn').addEventListener('click',()=>{ openModal(); closeSidebar(); });
+$('addScriptBtnTop').addEventListener('click',()=>openModal());
+$('addScriptBtnEmpty').addEventListener('click',()=>openModal());
+
+// ── SETTINGS ─────────────────────────────────────────────────
+const THEMES = [
+  { id:'dark-studio', name:'Studio', bg:'#141210', accent:'#c9973a' },
+  { id:'midnight-blue', name:'Midnight', bg:'#0d1117', accent:'#58a6ff' },
+  { id:'forest', name:'Forest', bg:'#0d1a0f', accent:'#4caf6e' },
+  { id:'crimson', name:'Crimson', bg:'#120a0a', accent:'#e05555' },
+  { id:'light-paper', name:'Paper', bg:'#f5f0e8', accent:'#8b5e2a' },
+  { id:'neon-noir', name:'Noir', bg:'#080810', accent:'#b044ff' },
+];
+
+function openSettings() {
+  // Theme grid
+  const grid=$('themeGrid'); grid.innerHTML='';
+  THEMES.forEach(t=>{
+    const btn=document.createElement('button'); btn.className='theme-swatch'+(settings.theme===t.id?' active':'');
+    btn.innerHTML=`<div class="theme-swatch-dot" style="background:linear-gradient(135deg,${t.bg} 50%,${t.accent} 50%)"></div><div class="theme-swatch-name">${t.name}</div>`;
+    btn.addEventListener('click',()=>{ settings.theme=t.id; save(KEYS.settings,settings); applySettings(); document.querySelectorAll('.theme-swatch').forEach(s=>s.classList.remove('active')); btn.classList.add('active'); toast(`Theme: ${t.name}`); });
+    grid.appendChild(btn);
+  });
+  // Toggles
+  $('settingCompact').checked=settings.compact;
+  $('settingAnimations').checked=settings.animations;
+  $('settingWordCount').checked=settings.wordCount;
+  $('settingExcerpt').checked=settings.excerpt;
+  // Font size / line height
+  $('fontSizeVal').textContent=settings.fontSize+'px';
+  $('lineHeightVal').textContent=settings.lineHeight.toFixed(1);
+  // Storage
+  try { const used=JSON.stringify(localStorage).length; $('storageUsed').textContent=`~${(used/1024).toFixed(1)} KB`; } catch {}
+  renderCustomThemesList();
+  renderFontList();
+  if (typeof refreshInstallUI === 'function') refreshInstallUI();
+  settingsOverlay.classList.add('open');
+}
+
+settingsClose.addEventListener('click',()=>settingsOverlay.classList.remove('open'));
+settingsOverlay.addEventListener('click',e=>{ if(e.target===settingsOverlay) settingsOverlay.classList.remove('open'); });
+
+document.querySelectorAll('.settings-tab').forEach(tab=>tab.addEventListener('click',()=>{
+  document.querySelectorAll('.settings-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.settings-panel').forEach(p=>p.classList.remove('active'));
+  tab.classList.add('active');
+  document.querySelector(`[data-settings-panel="${tab.dataset.settingsTab}"]`).classList.add('active');
+}));
+
+$('settingCompact').addEventListener('change',e=>{ settings.compact=e.target.checked; save(KEYS.settings,settings); applySettings(); });
+$('settingAnimations').addEventListener('change',e=>{ settings.animations=e.target.checked; save(KEYS.settings,settings); });
+$('settingWordCount').addEventListener('change',e=>{ settings.wordCount=e.target.checked; save(KEYS.settings,settings); applyFiltersAndRender(); });
+$('settingExcerpt').addEventListener('change',e=>{ settings.excerpt=e.target.checked; save(KEYS.settings,settings); applyFiltersAndRender(); });
+
+// ── READING FONT SELECTOR ─────────────────────────────────────
+const BUILTIN_FONTS = [
+  { name:'Crimson Pro', family:"'Crimson Pro', Georgia, serif", note:'Default · Serif' },
+  { name:'Lora', family:"'Lora', Georgia, serif", note:'Serif' },
+  { name:'Merriweather', family:"'Merriweather', Georgia, serif", note:'Serif' },
+  { name:'Source Serif', family:"'Source Serif 4', Georgia, serif", note:'Serif' },
+  { name:'Playfair Display', family:"'Playfair Display', Georgia, serif", note:'Display Serif' },
+  { name:'Atkinson Hyperlegible', family:"'Atkinson Hyperlegible', sans-serif", note:'Accessible · Sans' },
+  { name:'Lexend', family:"'Lexend', sans-serif", note:'Reduces reading fatigue · Sans' },
+  { name:'OpenDyslexic', family:"'OpenDyslexic', sans-serif", note:'Dyslexia-friendly' },
+  { name:'System Sans', family:"system-ui, -apple-system, sans-serif", note:'Sans' },
+];
+
+function renderFontList() {
+  const list = $('fontList'); list.innerHTML = '';
+  const all = [...BUILTIN_FONTS, ...customFonts.map(f => ({ name:f.name, family:f.family, note:'Custom', custom:true, id:f.id }))];
+  all.forEach(f => {
+    const active = settings.readingFont === f.family;
+    const row = document.createElement('button');
+    row.className = 'font-option' + (active ? ' active' : '');
+    row.innerHTML = `
+      <div class="font-option-text">
+        <span class="font-option-sample" style="font-family:${f.family.replace(/"/g,"'")}">The quick brown fox</span>
+        <span class="font-option-name">${escHtml(f.name)}<span class="font-tag">${escHtml(f.note)}</span></span>
+      </div>
+      <span class="font-option-check">✓</span>
+      ${f.custom ? `<button class="font-del" data-delfont="${f.id}" title="Remove font">✕</button>` : ''}`;
+    row.addEventListener('click', e => {
+      if (e.target.closest('[data-delfont]')) return;
+      settings.readingFont = f.family; save(KEYS.settings, settings); applySettings();
+      renderFontList(); toast(`Reading font: ${f.name}`);
+    });
+    const del = row.querySelector('[data-delfont]');
+    if (del) del.addEventListener('click', e => {
+      e.stopPropagation();
+      const removed = customFonts.find(x=>x.id===f.id);
+      customFonts = customFonts.filter(x => x.id !== f.id);
+      save('vs_custom_fonts', customFonts); injectCustomFontStyles();
+      if (removed && settings.readingFont === removed.family) {
+        settings.readingFont = BUILTIN_FONTS[0].family; save(KEYS.settings, settings); applySettings();
+      }
+      renderFontList(); toast('Font removed');
+    });
+    list.appendChild(row);
+  });
+}
+
+// Custom font: file upload
+let pendingFontDataUrl = null;
+$('customFontFileBtn').addEventListener('click', () => $('customFontFile').click());
+$('customFontFile').addEventListener('change', e => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => { pendingFontDataUrl = ev.target.result; $('customFontFilename').textContent = '✓ ' + f.name; };
+  r.readAsDataURL(f);
+});
+
+$('addCustomFont').addEventListener('click', () => {
+  const name = $('customFontName').value.trim();
+  const url = $('customFontUrl').value.trim();
+  if (!name) { $('customFontName').focus(); $('customFontName').style.borderColor='var(--red)'; return; }
+  $('customFontName').style.borderColor='';
+
+  const id = 'font_' + uid();
+  const family = `'${name.replace(/'/g,'')}', sans-serif`;
+  let entry = { id, name, family };
+
+  if (pendingFontDataUrl) {
+    // Embedded font file
+    entry.css = `@font-face { font-family:'${name.replace(/'/g,'')}'; src:url('${pendingFontDataUrl}'); font-display:swap; }`;
+  } else if (url) {
+    if (url.includes('fonts.googleapis.com') || url.endsWith('.css')) {
+      entry.linkHref = url; // stylesheet link
+    } else {
+      // direct font file URL
+      entry.css = `@font-face { font-family:'${name.replace(/'/g,'')}'; src:url('${url}'); font-display:swap; }`;
+    }
+  } else {
+    // No file/url — assume it's a locally installed font by name
+    entry.css = '';
+  }
+
+  customFonts.push(entry);
+  save('vs_custom_fonts', customFonts);
+  injectCustomFontStyles();
+  // reset inputs
+  $('customFontName').value=''; $('customFontUrl').value=''; $('customFontFilename').textContent=''; pendingFontDataUrl=null;
+  // auto-apply
+  settings.readingFont = family; save(KEYS.settings, settings); applySettings();
+  renderFontList();
+  toast(`Font "${name}" added & applied ✓`);
+});
+
+
+$('fontSizeDown').addEventListener('click',()=>{ if(settings.fontSize<=12) return; settings.fontSize-=1; $('fontSizeVal').textContent=settings.fontSize+'px'; save(KEYS.settings,settings); applySettings(); });
+$('lineHeightUp').addEventListener('click',()=>{ if(settings.lineHeight>=3.0) return; settings.lineHeight=Math.round((settings.lineHeight+0.1)*10)/10; $('lineHeightVal').textContent=settings.lineHeight.toFixed(1); save(KEYS.settings,settings); applySettings(); });
+$('lineHeightDown').addEventListener('click',()=>{ if(settings.lineHeight<=1.2) return; settings.lineHeight=Math.round((settings.lineHeight-0.1)*10)/10; $('lineHeightVal').textContent=settings.lineHeight.toFixed(1); save(KEYS.settings,settings); applySettings(); });
+
+$('exportJSON').addEventListener('click',()=>{
+  const data={scripts,settings,profile,comments,reactions,customThemes:load('vs_custom_themes',[]),customFonts,exportedAt:new Date().toISOString()};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`inscribe-backup-${Date.now()}.json`; a.click(); toast('Exported JSON ✓');
+});
+$('exportText').addEventListener('click',()=>{
+  const txt=scripts.map(s=>`${s.title}\nby ${s.author||'Unknown'} | ${s.genre||''} | ${(s.tags||[]).join(', ')}\n${'-'.repeat(60)}\n${s.content||''}\n\nNotes: ${s.notes||'—'}\n${'='.repeat(60)}`).join('\n\n');
+  const blob=new Blob([txt],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`inscribe-scripts-${Date.now()}.txt`; a.click(); toast('Exported text ✓');
+});
+$('importBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader(); r.onload=ev=>{ try { const d=JSON.parse(ev.target.result); if(d.scripts) { scripts=d.scripts; save(KEYS.scripts,scripts); } if(d.settings) { settings=d.settings; save(KEYS.settings,settings); } if(d.profile) { profile=d.profile; save(KEYS.profile,profile); } if(d.comments) { comments=d.comments; save(KEYS.comments,comments); } if(d.reactions) { reactions=d.reactions; save(KEYS.reactions,reactions); } if(d.customThemes) { save('vs_custom_themes',d.customThemes); } if(d.customFonts) { customFonts=d.customFonts; save('vs_custom_fonts',customFonts); } if(typeof injectCustomThemeStyles==='function') injectCustomThemeStyles(); injectCustomFontStyles(); applySettings(); renderNav(); applyFiltersAndRender(); toast('Import successful ✓'); } catch { toast('Invalid backup file'); } }; r.readAsText(f); e.target.value='';
+});
+$('clearScripts').addEventListener('click',()=>{ scripts=[]; save(KEYS.scripts,scripts); renderNav(); applyFiltersAndRender(); toast('All scripts deleted'); });
+$('resetAll').addEventListener('click',()=>{ Object.values(KEYS).forEach(k=>localStorage.removeItem(k)); localStorage.removeItem('vs_custom_themes'); localStorage.removeItem('vs_custom_fonts'); location.reload(); });
+
+[$('settingsBtn'),$('settingsBtnTop')].forEach(b=>b.addEventListener('click',()=>{ openSettings(); closeSidebar(); }));
+
+// ── PROFILE ───────────────────────────────────────────────────
+const EMOJIS=['🎙','🎭','🎬','🎤','🦁','🦊','🐺','🌙','⭐','👾','🎩','🌺','🔮','🦋','🎸','🎼','🧙','🦸','🐉','🌊'];
+const COLORS=['#c9973a','#58a6ff','#4caf6e','#e05555','#b044ff','#ff9444','#44ddcc','#ff6699','#aaaaff','#ffdd44'];
+
+function openProfile() {
+  $('profileName').value=profile.name||'';
+  $('profileHandle').value=profile.handle||'';
+  $('profileBio').value=profile.bio||'';
+  $('profileAvatarDisplay').textContent=profile.avatar||'🎙';
+  $('profileNameDisplay').textContent=profile.name||'Voice Actor';
+  $('profileHandleDisplay').textContent=profile.handle||'@username';
+
+  // Stats
+  $('statScripts').textContent=scripts.length;
+  $('statFavorites').textContent=scripts.filter(s=>s.favorite).length;
+  $('statComments').textContent=Object.values(comments).flat().filter(c=>c.author===profile.name).length;
+  const totalMyReactions=Object.values(reactions).reduce((sum,rx)=>sum+(rx.myLike?1:0)+(rx.myFire?1:0)+(rx.myHeart?1:0)+(rx.myMic?1:0),0);
+  $('statReactions').textContent=totalMyReactions;
+
+  // Emoji picker
+  const ep=$('emojiPicker'); ep.innerHTML='';
+  EMOJIS.forEach(e=>{ const btn=document.createElement('button'); btn.className='emoji-opt'+(profile.avatar===e?' active':''); btn.textContent=e; btn.addEventListener('click',()=>{ profile.avatar=e; $('profileAvatarDisplay').textContent=e; document.querySelectorAll('.emoji-opt').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); }); ep.appendChild(btn); });
+
+  // Color picker
+  const cp=$('colorPicker'); cp.innerHTML='';
+  COLORS.forEach(col=>{ const btn=document.createElement('button'); btn.className='color-opt'+(profile.color===col?' active':''); btn.style.background=col; btn.title=col; btn.addEventListener('click',()=>{ profile.color=col; document.querySelectorAll('.color-opt').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); toast('Accent colour updated'); }); cp.appendChild(btn); });
+  const reset=document.createElement('button'); reset.className='color-opt'+(profile.color===null?' active':''); reset.style.background='var(--border-2)'; reset.title='Default'; reset.textContent='↺'; reset.style.cssText+='font-size:0.7rem;color:var(--text-2);';
+  reset.addEventListener('click',()=>{ profile.color=null; document.querySelectorAll('.color-opt').forEach(x=>x.classList.remove('active')); reset.classList.add('active'); });
+  cp.appendChild(reset);
+
+  // Badges
+  const badges=[
+    { id:'writer', label:'📝 Wordsmith', desc:'10+ scripts', earned:scripts.length>=10 },
+    { id:'collector', label:'🗂 Collector', desc:'25+ scripts', earned:scripts.length>=25 },
+    { id:'reactor', label:'⚡ Reactor', desc:'10+ reactions given', earned:totalMyReactions>=10 },
+    { id:'critic', label:'💬 Critic', desc:'5+ comments', earned:Object.values(comments).flat().filter(c=>c.author===profile.name).length>=5 },
+    { id:'fan', label:'◆ Fan', desc:'5+ favourites', earned:scripts.filter(s=>s.favorite).length>=5 },
+    { id:'starter', label:'🚀 Getting Started', desc:'First script', earned:scripts.length>=1 },
+  ];
+  const bg=$('badgeGrid'); bg.innerHTML='';
+  badges.forEach(b=>{ const el=document.createElement('div'); el.className='badge'+(b.earned?' earned':''); el.innerHTML=`${b.label} <span style="color:var(--text-4);font-size:0.55rem">${b.desc}</span>`; el.title=b.earned?'Earned!':'Not yet earned'; bg.appendChild(el); });
+
+  profileOverlay.classList.add('open');
+}
+
+$('profileSave').addEventListener('click',()=>{
+  profile.name=$('profileName').value.trim()||'Voice Actor';
+  profile.handle=$('profileHandle').value.trim()||'@username';
+  profile.bio=$('profileBio').value.trim();
+  if(profile.color) document.documentElement.style.setProperty('--accent', profile.color);
+  save(KEYS.profile,profile);
+  profileOverlay.classList.remove('open');
+  toast('Profile saved ✓');
+});
+$('profileCancel').addEventListener('click',()=>profileOverlay.classList.remove('open'));
+profileOverlay.addEventListener('click',e=>{ if(e.target===profileOverlay) profileOverlay.classList.remove('open'); });
+$('profileAvatarDisplay').addEventListener('click',()=>{ const ep=$('emojiPicker'); ep.scrollIntoView({behavior:'smooth'}); ep.style.outline='1px solid var(--accent)'; setTimeout(()=>ep.style.outline='',1500); });
+[$('profileBtn'),$('profileBtnTop')].forEach(b=>b.addEventListener('click',()=>{ openProfile(); closeSidebar(); }));
+
+// ── CUSTOM THEMES ─────────────────────────────────────────────
+let customThemes = load('vs_custom_themes', []);
+let editingThemeId = null;
+
+function mixColor(hex, ratio) {
+  // darken/lighten a hex by mixing with black or white
+  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+  const mix = ratio > 0 ? 255 : 0, abs = Math.abs(ratio);
+  const nr=Math.round(r+(mix-r)*abs), ng=Math.round(g+(mix-g)*abs), nb=Math.round(b+(mix-b)*abs);
+  return '#'+[nr,ng,nb].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+
+function buildCustomThemeCSS(t) {
+  const bg2=mixColor(t.bg, 0.04), bg3=mixColor(t.bg, 0.08), bg4=mixColor(t.bg, 0.13);
+  const border=mixColor(t.bg, 0.12), border2=mixColor(t.bg, 0.18);
+  const text2=mixColor(t.text, -0.25), accentDim=t.accent+'26', accentGlow=t.accent+'14';
+  return `[data-theme="${t.id}"] {
+    --bg:${t.bg};--bg-2:${bg2};--bg-3:${bg3};--bg-4:${bg4};
+    --surface:${bg2};--border:${border};--border-2:${border2};
+    --accent:${t.accent};--accent-2:${mixColor(t.accent,0.15)};--accent-dim:${accentDim};--accent-glow:${accentGlow};
+    --text-1:${t.text};--text-2:${text2};--text-3:${t.muted};--text-4:${mixColor(t.muted,-0.2)};
+    --red:#e05555;--green:#5a9a6a;
+  }`;
+}
+
+function injectCustomThemeStyles() {
+  let el = document.getElementById('customThemeStyles');
+  if (!el) { el = document.createElement('style'); el.id='customThemeStyles'; document.head.appendChild(el); }
+  el.textContent = customThemes.map(buildCustomThemeCSS).join('\n');
+}
+
+function renderCustomThemesList() {
+  const list = $('customThemesList');
+  if (!customThemes.length) { list.innerHTML='<div class="no-custom-themes">No custom themes yet. Create one below!</div>'; return; }
+  list.innerHTML = '';
+  customThemes.forEach(t => {
+    const row = document.createElement('div'); row.className = 'custom-theme-row';
+    row.innerHTML = `
+      <div class="custom-theme-dot" style="background:linear-gradient(135deg,${t.bg} 50%,${t.accent} 50%)"></div>
+      <span class="custom-theme-name">${escHtml(t.name)}</span>
+      <div class="custom-theme-actions">
+        <button class="custom-theme-btn apply" data-apply="${t.id}">Apply</button>
+        <button class="custom-theme-btn" data-edit="${t.id}">Edit</button>
+        <button class="custom-theme-btn del" data-del="${t.id}">✕</button>
+      </div>`;
+    row.querySelector('[data-apply]').addEventListener('click', () => {
+      settings.theme = t.id; save(KEYS.settings, settings); applySettings();
+      document.querySelectorAll('.theme-swatch').forEach(s=>s.classList.remove('active'));
+      toast(`Theme: ${t.name}`);
+    });
+    row.querySelector('[data-edit]').addEventListener('click', () => openThemeBuilder(t.id));
+    row.querySelector('[data-del]').addEventListener('click', () => {
+      customThemes = customThemes.filter(x => x.id !== t.id);
+      save('vs_custom_themes', customThemes); injectCustomThemeStyles();
+      if (settings.theme === t.id) { settings.theme = 'dark-studio'; save(KEYS.settings, settings); applySettings(); }
+      renderCustomThemesList(); toast('Theme deleted');
+    });
+    list.appendChild(row);
+  });
+}
+
+function openThemeBuilder(id = null) {
+  editingThemeId = id;
+  const builder = $('themeBuilder');
+  const t = id ? customThemes.find(x => x.id === id) : null;
+  $('themeBuilderLabel').textContent = id ? 'Edit Theme' : 'New Theme';
+  $('customThemeName').value = t ? t.name : '';
+  $('tcBg').value = t ? t.bg : '#141210'; $('tcBgHex').value = t ? t.bg : '#141210';
+  $('tcSurface').value = t ? t.surface||'#1c1916' : '#1c1916'; $('tcSurfaceHex').value = t ? t.surface||'#1c1916' : '#1c1916';
+  $('tcAccent').value = t ? t.accent : '#c9973a'; $('tcAccentHex').value = t ? t.accent : '#c9973a';
+  $('tcText').value = t ? t.text : '#f0e8d8'; $('tcTextHex').value = t ? t.text : '#f0e8d8';
+  $('tcMuted').value = t ? t.muted : '#7a6d58'; $('tcMutedHex').value = t ? t.muted : '#7a6d58';
+  $('tcBorder').value = t ? t.border||'#2e2820' : '#2e2820'; $('tcBorderHex').value = t ? t.border||'#2e2820' : '#2e2820';
+  builder.classList.add('open');
+  updateThemePreview();
+}
+
+function updateThemePreview() {
+  const bg=$('tcBg').value, accent=$('tcAccent').value, text=$('tcText').value, muted=$('tcMuted').value, border=$('tcBorder').value;
+  const bg3=mixColor(bg,0.08), accentGlow=accent+'14';
+  const preview=$('themePreview');
+  preview.style.cssText=`background:${bg3};border-color:${border}`;
+  preview.querySelector('.tp-card').style.cssText=`background:${bg3};padding:14px 16px;display:flex;flex-direction:column;gap:6px;`;
+  preview.querySelector('.tp-tag').style.cssText=`color:${accent};background:${accentGlow};border:1px solid ${accent}44;font-family:var(--ff-mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:2px 8px;border-radius:3px;display:inline-block;width:fit-content;`;
+  preview.querySelector('.tp-title').style.cssText=`color:${text};font-family:var(--ff-display);font-size:1rem;font-weight:700;line-height:1.2;`;
+  preview.querySelector('.tp-author').style.cssText=`color:${muted};font-size:0.78rem;font-style:italic;`;
+  preview.querySelector('.tp-excerpt').style.cssText=`color:${muted};font-size:0.8rem;line-height:1.5;`;
+  preview.querySelector('.tp-footer').style.cssText=`display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px solid ${border};`;
+  preview.querySelector('.tp-stat').style.cssText=`color:${muted};font-family:var(--ff-mono);font-size:0.58rem;`;
+  preview.querySelector('.tp-pill').style.cssText=`color:${muted};font-family:var(--ff-mono);font-size:0.58rem;padding:2px 6px;border-radius:3px;background:${mixColor(bg,0.13)};`;
+}
+
+// Wire colour inputs — wheel syncs hex, hex syncs wheel
+[['tcBg','tcBgHex'],['tcSurface','tcSurfaceHex'],['tcAccent','tcAccentHex'],['tcText','tcTextHex'],['tcMuted','tcMutedHex'],['tcBorder','tcBorderHex']].forEach(([wid,hid])=>{
+  $(wid).addEventListener('input',()=>{ $(hid).value=$(wid).value; updateThemePreview(); });
+  $(hid).addEventListener('input',()=>{ const v=$(hid).value; if(/^#[0-9a-fA-F]{6}$/.test(v)){ $(wid).value=v; updateThemePreview(); } });
+});
+
+$('themeBuilderCancel').addEventListener('click',()=>{ $('themeBuilder').classList.remove('open'); editingThemeId=null; });
+
+$('newCustomThemeBtn').addEventListener('click',()=>openThemeBuilder(null));
+
+$('saveCustomTheme').addEventListener('click',()=>{
+  const name=$('customThemeName').value.trim()||'My Theme';
+  const t = {
+    id: editingThemeId || ('custom_'+uid()),
+    name, bg:$('tcBg').value, surface:$('tcSurface').value,
+    accent:$('tcAccent').value, text:$('tcText').value,
+    muted:$('tcMuted').value, border:$('tcBorder').value,
+  };
+  if(editingThemeId) { const idx=customThemes.findIndex(x=>x.id===editingThemeId); if(idx!==-1) customThemes[idx]=t; }
+  else customThemes.push(t);
+  save('vs_custom_themes', customThemes); injectCustomThemeStyles();
+  renderCustomThemesList(); $('themeBuilder').classList.remove('open'); editingThemeId=null;
+  // Auto-apply newly created theme
+  settings.theme=t.id; save(KEYS.settings,settings); applySettings();
+  toast(`Theme "${name}" saved & applied ✓`);
+});
+
+// Init custom themes on load
+injectCustomThemeStyles();
+
+// ── PWA INSTALL ───────────────────────────────────────────────
+let deferredInstallPrompt = null;
+
+function isStandalone() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+function isiOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  refreshInstallUI();
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  refreshInstallUI();
+  toast('Inscribe installed ✓');
+});
+
+function refreshInstallUI() {
+  const btn = $('installBtn'), title = $('installTitle'), sub = $('installSub'), help = $('installHelp');
+  if (!btn) return;
+
+  if (isStandalone()) {
+    title.textContent = 'App Installed';
+    sub.textContent = 'Inscribe is running as an installed app. You\'re all set.';
+    btn.style.display = 'none';
+    help.style.display = 'none';
+    return;
+  }
+
+  if (deferredInstallPrompt) {
+    // Chrome/Edge/Android — native prompt available
+    btn.style.display = '';
+    btn.disabled = false;
+    btn.textContent = 'Install';
+    help.style.display = 'none';
+  } else if (isiOS()) {
+    // iOS Safari — no programmatic prompt
+    btn.style.display = 'none';
+    help.style.display = 'block';
+    help.innerHTML = 'On iPhone/iPad: tap the <b>Share</b> button <span style="font-family:var(--ff-mono)">⎙</span> in Safari, then choose <b>“Add to Home Screen”</b>.';
+  } else {
+    // Other browsers — show manual hint
+    btn.style.display = 'none';
+    help.style.display = 'block';
+    help.innerHTML = 'Use your browser menu and choose <b>“Install app”</b> or <b>“Add to Home Screen”</b>. (In Chrome/Edge, look for the install icon in the address bar.)';
+  }
+}
+
+$('installBtn').addEventListener('click', async () => {
+  if (!deferredInstallPrompt) { refreshInstallUI(); return; }
+  deferredInstallPrompt.prompt();
+  const { outcome } = await deferredInstallPrompt.userChoice;
+  if (outcome === 'accepted') toast('Installing…');
+  deferredInstallPrompt = null;
+  refreshInstallUI();
+});
+
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ if(modalOverlay.classList.contains('open')) closeModal(); else if(viewOverlay.classList.contains('open')) closeView(); else if(settingsOverlay.classList.contains('open')) settingsOverlay.classList.remove('open'); else if(profileOverlay.classList.contains('open')) profileOverlay.classList.remove('open'); else closeSidebar(); }
+  if((e.ctrlKey||e.metaKey)&&e.key==='k'){ e.preventDefault(); searchInput.focus(); searchInput.select(); }
+  if((e.ctrlKey||e.metaKey)&&e.key==='n'&&!modalOverlay.classList.contains('open')){ e.preventDefault(); openModal(); }
+});
+
+// ── SEED DATA ─────────────────────────────────────────────────
+function init() {
+  if(profile.color) document.documentElement.style.setProperty('--accent', profile.color);
+  renderNav(); applyFiltersAndRender();
+}
+init();
+</script>
+</body>
+</html>
