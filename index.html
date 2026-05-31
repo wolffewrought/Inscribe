@@ -372,9 +372,10 @@ body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body);
   .active-filters, .results-count { display: none; }
   .form-row { grid-template-columns: 1fr; }
   .form-group--sm { min-width: 0; }
-  .modal-overlay { padding: 0; align-items: flex-end; }
-  .modal { max-height: 90dvh; border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: none; }
-  .modal--view { max-height: 94dvh; }
+  .modal-overlay { padding: 0 0; padding-bottom: max(28px, env(safe-area-inset-bottom, 28px)); align-items: flex-end; }
+  .modal { max-height: 86dvh; border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: none; }
+  .modal--view { max-height: 92dvh; }
+  .modal-body { padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px)); }
   .theme-grid { grid-template-columns: repeat(2, 1fr); }
   .profile-hero { flex-direction: column; text-align: center; }
 }
