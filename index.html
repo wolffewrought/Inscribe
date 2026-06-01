@@ -122,7 +122,7 @@ body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body);
 .nav-tag-btn.active { color: var(--accent-2); background: var(--accent-dim); }
 .nav-tag-count { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-4); }
 .sidebar-bottom { padding: 10px; display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--border); }
-.sidebar-bottom-row { display: flex; gap: 6px; }
+.sidebar-top-row { display: flex; gap: 6px; margin-bottom: 8px; }
 .sidebar-action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px; border-radius: var(--radius); border: 1px solid var(--border-2); background: none; color: var(--text-2); font-family: var(--ff-body); font-size: 0.82rem; cursor: pointer; transition: all 0.15s; }
 .sidebar-action-btn:hover { background: var(--bg-3); color: var(--text-1); border-color: var(--text-3); }
 .add-script-btn { padding: 12px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-family: var(--ff-display); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; letter-spacing: 0.02em; width: 100%; }
@@ -464,6 +464,10 @@ body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body);
       <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">✕</button>
     </div>
     <nav class="sidebar-nav">
+      <div class="sidebar-top-row">
+        <button class="sidebar-action-btn" id="profileBtn">👤 Profile</button>
+        <button class="sidebar-action-btn" id="settingsBtn">⚙ Settings</button>
+      </div>
       <div class="nav-section-label">Library</div>
       <button class="nav-item active" data-filter-preset="all"><span class="nav-icon">◈</span> All Scripts <span class="nav-count" id="countAll">0</span></button>
       <button class="nav-item" data-filter-preset="recent"><span class="nav-icon">◷</span> Recently Added</button>
@@ -477,10 +481,6 @@ body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body);
     </nav>
     <div class="sidebar-bottom">
       <button class="add-script-btn" id="addScriptBtn"><span>+</span> New Script</button>
-      <div class="sidebar-bottom-row">
-        <button class="sidebar-action-btn" id="profileBtn">👤 Profile</button>
-        <button class="sidebar-action-btn" id="settingsBtn">⚙ Settings</button>
-      </div>
     </div>
   </aside>
 
