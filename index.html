@@ -124,6 +124,24 @@ body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body);
 .nav-tag-count { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--text-4); }
 .sidebar-bottom { padding: 10px; display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--border); }
 .sidebar-top-row { display: flex; gap: 6px; margin-bottom: 8px; }
+/* ── MODE TOGGLE ── */
+.mode-toggle { display: flex; gap: 3px; padding: 3px; background: var(--bg-4); border-radius: 24px; margin-bottom: 12px; }
+.mode-opt { flex: 1; padding: 8px 6px; border: none; background: none; color: var(--text-3); font-family: var(--ff-body); font-size: 0.82rem; cursor: pointer; border-radius: 20px; transition: all 0.18s; white-space: nowrap; }
+.mode-opt:hover { color: var(--text-1); }
+.mode-opt.active { background: var(--accent); color: var(--bg); font-weight: 600; }
+.community-status { font-family: var(--ff-mono); font-size: 0.58rem; color: var(--text-4); padding: 0 8px 8px; line-height: 1.4; }
+.community-status b { color: var(--accent-2); }
+/* publish button on cards / view */
+.publish-badge { font-family: var(--ff-mono); font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); border: 1px solid color-mix(in srgb, var(--green) 30%, transparent); padding: 2px 7px; border-radius: 3px; }
+.view-publish-btn { display: flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius); border: 1px solid var(--accent); background: var(--accent-glow); color: var(--accent-2); font-family: var(--ff-mono); font-size: 0.7rem; cursor: pointer; transition: all 0.15s; margin: 0 28px 16px; }
+.view-publish-btn:hover { background: var(--accent-dim); }
+.view-publish-btn.published { border-color: var(--green); color: var(--green); background: color-mix(in srgb, var(--green) 10%, transparent); }
+/* community banner in main area */
+.community-banner { padding: 14px 18px; background: var(--accent-glow); border: 1px solid var(--accent-dim); border-radius: var(--radius-lg); margin-bottom: 16px; font-size: 0.9rem; color: var(--text-2); line-height: 1.5; display: flex; align-items: center; gap: 12px; }
+.community-banner .cb-icon { font-size: 1.4rem; }
+.community-banner b { color: var(--accent-2); }
+.community-signin-btn { margin-left: auto; padding: 7px 16px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-family: var(--ff-display); font-weight: 700; font-size: 0.82rem; cursor: pointer; white-space: nowrap; }
+.community-signin-btn:hover { background: var(--accent-2); }
 .sidebar-action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px; border-radius: var(--radius); border: 1px solid var(--border-2); background: none; color: var(--text-2); font-family: var(--ff-body); font-size: 0.82rem; cursor: pointer; transition: all 0.15s; }
 .sidebar-action-btn:hover { background: var(--bg-3); color: var(--text-1); border-color: var(--text-3); }
 .add-script-btn { padding: 12px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-family: var(--ff-display); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; letter-spacing: 0.02em; width: 100%; }
@@ -465,6 +483,10 @@ body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body);
       <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">✕</button>
     </div>
     <nav class="sidebar-nav">
+      <div class="mode-toggle" id="modeToggle">
+        <button class="mode-opt active" data-mode="local">📁 My Library</button>
+        <button class="mode-opt" data-mode="community">🌐 Community</button>
+      </div>
       <div class="sidebar-top-row">
         <button class="sidebar-action-btn" id="profileBtn">👤 Profile</button>
         <button class="sidebar-action-btn" id="settingsBtn">⚙ Settings</button>
@@ -518,6 +540,11 @@ body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body);
       <div class="results-count" id="resultsCount"></div>
     </div>
     <div class="scripts-container" id="scriptsContainer">
+      <div class="community-banner" id="communityBanner" style="display:none">
+        <span class="cb-icon">🌐</span>
+        <span id="communityBannerText">You're browsing the <b>Community</b> library — scripts shared by other users.</span>
+        <button class="community-signin-btn" id="communitySignInBtn">Sign in</button>
+      </div>
       <div class="scripts-grid" id="scriptsGrid"></div>
       <div class="empty-state" id="emptyState" style="display:none">
         <div class="empty-icon">🎙</div>
@@ -586,6 +613,7 @@ body { background: var(--bg); color: var(--text-1); font-family: var(--ff-body);
         <div class="view-scroll-hint" id="viewScrollHint"><span>scroll to read</span><span class="scroll-arrow">↓</span></div>
       </div>
       <div class="view-content" id="viewContent"></div>
+      <button class="view-publish-btn" id="viewPublishBtn" style="display:none">⬆ Publish to Community</button>
       <!-- Reactions -->
       <div class="view-reactions" id="viewReactions">
         <button class="reaction-btn" id="reactionLike">👍 <span class="reaction-count" id="likeCount">0</span></button>
@@ -870,7 +898,10 @@ function load(key, def) { try { return JSON.parse(localStorage.getItem(key)) ?? 
 function save(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
 
 // ── STATE ─────────────────────────────────────────────────────
-let scripts   = load(KEYS.scripts, []);
+let localScripts = load(KEYS.scripts, []);
+let communityScripts = [];           // populated from Supabase when in community mode
+let scripts   = localScripts;        // `scripts` always points at the ACTIVE source
+let appMode   = load('vs_mode', 'local');  // 'local' | 'community'
 let settings  = load(KEYS.settings, { theme:'dark-studio', compact:false, animations:true, fontSize:18, lineHeight:2.0, wordCount:true, excerpt:true, readingFont:"'Crimson Pro', Georgia, serif" });
 let profile   = load(KEYS.profile,  { name:'Voice Actor', handle:'@username', bio:'', avatar:'🎙', color:null });
 let comments  = load(KEYS.comments, {});   // { scriptId: [{id,author,avatar,text,ts,likes,liked}] }
@@ -906,6 +937,150 @@ function applySettings() {
 }
 injectCustomFontStyles();
 applySettings();
+
+// ══════════════════════════════════════════════════════════════
+//  DATA SOURCE LAYER — Local (localStorage) vs Community (Supabase)
+// ══════════════════════════════════════════════════════════════
+
+// Supabase config — fill these in to enable Community mode.
+// 1. Create a free project at supabase.com
+// 2. Paste your Project URL and anon/public key below
+// 3. Run the SQL schema (see SUPABASE_SETUP notes) to create the `scripts` table
+const SUPABASE_URL = '';      // e.g. 'https://xxxx.supabase.co'
+const SUPABASE_ANON_KEY = ''; // e.g. 'eyJhbGci...'
+let supabase = null;
+let communityUser = null;     // signed-in Supabase user, or null
+
+function supabaseEnabled() { return !!(SUPABASE_URL && SUPABASE_ANON_KEY); }
+
+// Persist the LOCAL library only (community writes go to Supabase, never here)
+function persistScripts() {
+  if (appMode === 'local') { localScripts = scripts; save(KEYS.scripts, localScripts); }
+}
+
+// Switch the active library and re-render
+async function setMode(mode) {
+  appMode = mode;
+  save('vs_mode', mode);
+  document.querySelectorAll('.mode-opt').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  const banner = $('communityBanner');
+
+  if (mode === 'local') {
+    scripts = localScripts;
+    banner.style.display = 'none';
+    renderNav(); applyFiltersAndRender();
+  } else {
+    banner.style.display = 'flex';
+    if (!supabaseEnabled()) {
+      // Backend not configured yet — show friendly placeholder
+      communityScripts = [];
+      scripts = communityScripts;
+      $('communityBannerText').innerHTML = '🚧 <b>Community is coming soon.</b> Once connected, you\'ll browse and publish scripts shared by other voice actors here.';
+      $('communitySignInBtn').style.display = 'none';
+      renderNav(); applyFiltersAndRender();
+    } else {
+      $('communitySignInBtn').style.display = communityUser ? 'none' : '';
+      $('communityBannerText').innerHTML = communityUser
+        ? `🌐 Browsing the <b>Community</b> library. Signed in as <b>${escHtml(communityUser.email || profile.name)}</b>.`
+        : 'You\'re browsing the <b>Community</b> library — sign in to publish your own scripts.';
+      await loadCommunityScripts();
+    }
+  }
+}
+
+// ── Supabase initialisation (lazy — only if configured) ──
+async function initSupabase() {
+  if (!supabaseEnabled()) return;
+  try {
+    if (!window.supabase) {
+      // load the SDK from CDN on demand
+      await new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+        s.onload = res; s.onerror = rej; document.head.appendChild(s);
+      });
+    }
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const { data } = await supabase.auth.getSession();
+    communityUser = data?.session?.user || null;
+    supabase.auth.onAuthStateChange((_e, session) => { communityUser = session?.user || null; });
+  } catch (e) {
+    console.warn('Supabase init failed:', e);
+  }
+}
+
+// ── Community reads ──
+async function loadCommunityScripts() {
+  if (!supabase) { communityScripts = []; scripts = communityScripts; renderNav(); applyFiltersAndRender(); return; }
+  try {
+    const { data, error } = await supabase
+      .from('scripts')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    // map db rows -> app script shape
+    communityScripts = (data || []).map(r => ({
+      id: r.id, title: r.title, author: r.author, language: r.language,
+      genre: r.genre, tags: r.tags || [], character: r.character,
+      content: r.content, notes: r.notes, favorite: false,
+      createdAt: new Date(r.created_at).getTime(), updatedAt: new Date(r.created_at).getTime(),
+      published: true, ownerId: r.owner_id,
+    }));
+    scripts = communityScripts;
+    renderNav(); applyFiltersAndRender();
+  } catch (e) {
+    console.warn('loadCommunityScripts failed:', e);
+    toast('Could not load community scripts');
+  }
+}
+
+// ── Publish a LOCAL script to the Community ──
+async function publishScript(id) {
+  const s = localScripts.find(x => x.id === id) || scripts.find(x => x.id === id);
+  if (!s) return;
+  if (!supabaseEnabled()) { toast('Community backend not connected yet'); return; }
+  if (!supabase) await initSupabase();
+  if (!communityUser) { toast('Sign in to publish'); openCommunitySignIn(); return; }
+  try {
+    const { error } = await supabase.from('scripts').insert({
+      title: s.title, author: s.author || profile.name, language: s.language,
+      genre: s.genre, tags: s.tags || [], character: s.character,
+      content: s.content, notes: s.notes, owner_id: communityUser.id,
+    });
+    if (error) throw error;
+    // mark local script as published
+    s.published = true; persistScripts();
+    toast('Published to Community ✓');
+    if (appMode === 'community') loadCommunityScripts();
+  } catch (e) {
+    console.warn('publish failed:', e);
+    toast('Publish failed');
+  }
+}
+
+// ── Sign-in (email magic link via Supabase) ──
+async function openCommunitySignIn() {
+  if (!supabaseEnabled()) { toast('Community backend not connected yet'); return; }
+  if (!supabase) await initSupabase();
+  const email = prompt('Enter your email to sign in / sign up for the Community:');
+  if (!email) return;
+  try {
+    const { error } = await supabase.auth.signInWithOtp({ email });
+    if (error) throw error;
+    toast('Check your email for a sign-in link');
+  } catch (e) {
+    console.warn(e); toast('Sign-in failed');
+  }
+}
+
+// ── Wire the toggle + community buttons (called after DOM refs are ready) ──
+function wireCommunityControls() {
+  document.querySelectorAll('.mode-opt').forEach(btn =>
+    btn.addEventListener('click', () => { setMode(btn.dataset.mode); closeSidebar(); }));
+  $('communitySignInBtn').addEventListener('click', openCommunitySignIn);
+  $('viewPublishBtn').addEventListener('click', () => { if (viewingId) publishScript(viewingId); });
+}
+
 
 // ── HELPERS ───────────────────────────────────────────────────
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
@@ -1062,11 +1237,14 @@ modalOverlay.addEventListener('click',e=>{ if(e.target===modalOverlay) closeModa
 modalSave.addEventListener('click',()=>{
   const title=fieldTitle.value.trim(); if(!title){ fieldTitle.focus(); fieldTitle.style.borderColor='var(--red)'; return; } fieldTitle.style.borderColor='';
   const tags=parseTags(fieldTags.value), now=Date.now();
-  if(editingId){ const idx=scripts.findIndex(x=>x.id===editingId); if(idx!==-1){ scripts[idx]={...scripts[idx],title,author:fieldAuthor.value.trim(),language:fieldLanguage.value.trim(),genre:fieldGenre.value.trim(),tags,character:fieldCharacter.value.trim(),content:fieldContent.value.trim(),notes:fieldNotes.value.trim(),updatedAt:now}; }}
-  else scripts.unshift({id:uid(),title,author:fieldAuthor.value.trim(),language:fieldLanguage.value.trim(),genre:fieldGenre.value.trim(),tags,character:fieldCharacter.value.trim(),content:fieldContent.value.trim(),notes:fieldNotes.value.trim(),favorite:false,createdAt:now,updatedAt:now});
-  save(KEYS.scripts,scripts); renderNav(); applyFiltersAndRender(); closeModal(); toast(editingId?'Script updated ✓':'Script saved ✓');
+  // New & edited scripts always live in the LOCAL library
+  if(editingId){ const idx=localScripts.findIndex(x=>x.id===editingId); if(idx!==-1){ localScripts[idx]={...localScripts[idx],title,author:fieldAuthor.value.trim(),language:fieldLanguage.value.trim(),genre:fieldGenre.value.trim(),tags,character:fieldCharacter.value.trim(),content:fieldContent.value.trim(),notes:fieldNotes.value.trim(),updatedAt:now}; }}
+  else localScripts.unshift({id:uid(),title,author:fieldAuthor.value.trim(),language:fieldLanguage.value.trim(),genre:fieldGenre.value.trim(),tags,character:fieldCharacter.value.trim(),content:fieldContent.value.trim(),notes:fieldNotes.value.trim(),favorite:false,createdAt:now,updatedAt:now});
+  save(KEYS.scripts,localScripts);
+  if(appMode==='local') scripts=localScripts;
+  renderNav(); applyFiltersAndRender(); closeModal(); toast(editingId?'Script updated ✓':'Script saved ✓');
 });
-modalDelete.addEventListener('click',()=>{ if(!editingId) return; scripts=scripts.filter(x=>x.id!==editingId); save(KEYS.scripts,scripts); renderNav(); applyFiltersAndRender(); closeModal(); toast('Script deleted'); });
+modalDelete.addEventListener('click',()=>{ if(!editingId) return; localScripts=localScripts.filter(x=>x.id!==editingId); save(KEYS.scripts,localScripts); if(appMode==='local') scripts=localScripts; renderNav(); applyFiltersAndRender(); closeModal(); toast('Script deleted'); });
 
 // ── VIEW MODAL ────────────────────────────────────────────────
 function openView(id) {
@@ -1083,6 +1261,17 @@ function openView(id) {
   viewStats.textContent=`${words.toLocaleString()} words · ${(s.content||'').length.toLocaleString()} chars`;
   viewDate.textContent=`Added ${formatDate(s.createdAt)}`;
   viewFavorite.style.color=s.favorite?'var(--accent)':'';
+  // Mode-aware controls: edit only in local; publish only in local for un-published scripts
+  const pubBtn=$('viewPublishBtn');
+  if(appMode==='local'){
+    viewEdit.style.display='';
+    pubBtn.style.display='';
+    pubBtn.classList.toggle('published', !!s.published);
+    pubBtn.textContent = s.published ? '✓ Published to Community' : '⬆ Publish to Community';
+  } else {
+    viewEdit.style.display='none';   // can't edit others' community scripts
+    pubBtn.style.display='none';
+  }
   viewBody.scrollTop=0; viewScrollHint.classList.remove('hidden');
   renderReactions(id); renderComments(id);
   viewOverlay.classList.add('open');
@@ -1094,7 +1283,7 @@ viewBody.addEventListener('scroll',()=>{ viewScrollHint.classList.toggle('hidden
 viewEdit.addEventListener('click',()=>{ closeView(); setTimeout(()=>openModal(viewingId),50); });
 viewFavorite.addEventListener('click',()=>{ if(!viewingId) return; toggleFavorite(viewingId); const s=scripts.find(x=>x.id===viewingId); if(s) viewFavorite.style.color=s.favorite?'var(--accent)':''; });
 
-function toggleFavorite(id) { const s=scripts.find(x=>x.id===id); if(!s) return; s.favorite=!s.favorite; s.updatedAt=Date.now(); save(KEYS.scripts,scripts); renderNav(); applyFiltersAndRender(); toast(s.favorite?'Added to favourites ◆':'Removed from favourites'); }
+function toggleFavorite(id) { const s=scripts.find(x=>x.id===id); if(!s) return; s.favorite=!s.favorite; s.updatedAt=Date.now(); if(appMode==='local'){ localScripts=scripts; save(KEYS.scripts,localScripts); } renderNav(); applyFiltersAndRender(); toast(s.favorite?'Added to favourites ◆':'Removed from favourites'); }
 
 // ── REACTIONS ─────────────────────────────────────────────────
 function getReactions(id) { return reactions[id] || (reactions[id]={like:0,dislike:0,fire:0,heart:0,mic:0,myLike:false,myDislike:false,myFire:false,myHeart:false,myMic:false}); }
@@ -1327,9 +1516,9 @@ $('exportText').addEventListener('click',()=>{
 $('importBtn').addEventListener('click',()=>$('importFile').click());
 $('importFile').addEventListener('change',e=>{
   const f=e.target.files[0]; if(!f) return;
-  const r=new FileReader(); r.onload=ev=>{ try { const d=JSON.parse(ev.target.result); if(d.scripts) { scripts=d.scripts; save(KEYS.scripts,scripts); } if(d.settings) { settings=d.settings; save(KEYS.settings,settings); } if(d.profile) { profile=d.profile; save(KEYS.profile,profile); } if(d.comments) { comments=d.comments; save(KEYS.comments,comments); } if(d.reactions) { reactions=d.reactions; save(KEYS.reactions,reactions); } if(d.customThemes) { save('vs_custom_themes',d.customThemes); } if(d.customFonts) { customFonts=d.customFonts; save('vs_custom_fonts',customFonts); } if(typeof injectCustomThemeStyles==='function') injectCustomThemeStyles(); injectCustomFontStyles(); applySettings(); renderNav(); applyFiltersAndRender(); toast('Import successful ✓'); } catch { toast('Invalid backup file'); } }; r.readAsText(f); e.target.value='';
+  const r=new FileReader(); r.onload=ev=>{ try { const d=JSON.parse(ev.target.result); if(d.scripts) { localScripts=d.scripts; save(KEYS.scripts,localScripts); if(appMode==='local') scripts=localScripts; } if(d.settings) { settings=d.settings; save(KEYS.settings,settings); } if(d.profile) { profile=d.profile; save(KEYS.profile,profile); } if(d.comments) { comments=d.comments; save(KEYS.comments,comments); } if(d.reactions) { reactions=d.reactions; save(KEYS.reactions,reactions); } if(d.customThemes) { save('vs_custom_themes',d.customThemes); } if(d.customFonts) { customFonts=d.customFonts; save('vs_custom_fonts',customFonts); } if(typeof injectCustomThemeStyles==='function') injectCustomThemeStyles(); injectCustomFontStyles(); applySettings(); renderNav(); applyFiltersAndRender(); toast('Import successful ✓'); } catch { toast('Invalid backup file'); } }; r.readAsText(f); e.target.value='';
 });
-$('clearScripts').addEventListener('click',()=>{ scripts=[]; save(KEYS.scripts,scripts); renderNav(); applyFiltersAndRender(); toast('All scripts deleted'); });
+$('clearScripts').addEventListener('click',()=>{ localScripts=[]; save(KEYS.scripts,localScripts); if(appMode==='local') scripts=localScripts; renderNav(); applyFiltersAndRender(); toast('All scripts deleted'); });
 $('resetAll').addEventListener('click',()=>{ Object.values(KEYS).forEach(k=>localStorage.removeItem(k)); localStorage.removeItem('vs_custom_themes'); localStorage.removeItem('vs_custom_fonts'); location.reload(); });
 
 [$('settingsBtn'),$('settingsBtnTop')].forEach(b=>b.addEventListener('click',()=>{ openSettings(); closeSidebar(); }));
@@ -1587,7 +1776,16 @@ document.addEventListener('keydown',e=>{
 // ── SEED DATA ─────────────────────────────────────────────────
 function init() {
   if(profile.color) document.documentElement.style.setProperty('--accent', profile.color);
-  renderNav(); applyFiltersAndRender();
+  wireCommunityControls();
+  // Initialise Supabase in the background (no-op until configured)
+  initSupabase();
+  // Restore saved mode — default to local. Community only auto-loads if previously selected.
+  if(appMode==='community'){
+    setMode('community');
+  } else {
+    appMode='local'; scripts=localScripts;
+    renderNav(); applyFiltersAndRender();
+  }
 }
 init();
 
